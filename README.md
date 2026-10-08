@@ -21,6 +21,13 @@ npm run preview   # sirve dist/ para revisarlo
 - **Estilos:** `src/estilos.css`. El bloque `@theme` es copia del de la app. Si cambia allá, copiarlo acá.
 - **Capturas:** `public/capturas/<pantalla>-claro.webp` y `-oscuro.webp`, a 2x (2720×1700). Se sacan de Cota con datos de ejemplo, nunca con datos reales. Para convertirlas: `magick captura.png -quality 82 -define webp:method=6 captura.webp`.
 
+## Página de vuelta del pago
+
+`pago.html` es adonde Mercado Pago manda al cliente después de pagar: es el secreto `URL_VUELTA` del servidor de licencias.
+- Muestra cómo salió el pago (aprobado, en proceso o rechazado) según lo que Mercado Pago agrega a la URL. La lógica está en `src/pago.ts`.
+- Abre Cota con el link `cota://pago`: Cota pasa al frente, valida la licencia en el momento y muestra *Configuración → Licencia*.
+- El mensaje es solo informativo: la licencia se activa por lo que el servidor le pregunta a Mercado Pago, nunca por esta página.
+
 ## Descarga del instalador
 
 El botón apunta a `https://github.com/COTA-App/Downloads/releases/latest/download/Cota-Instalador.exe`:

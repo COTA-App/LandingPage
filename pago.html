@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cota · Pago</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f4eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/marca/cota-icono-claro.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/estilos.css" />
+  </head>
+  <body>
+    <!-- Símbolo de Cota, definido una vez y reutilizado. Toma los colores del modo claro u oscuro. -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <symbol id="simbolo" viewBox="182 182 660 660">
+        <g style="stroke: var(--simbolo-trazo); stroke-width: 26">
+          <line x1="200" y1="512" x2="824" y2="512" />
+          <line x1="512" y1="200" x2="512" y2="824" />
+          <circle cx="512" cy="512" r="208" style="fill: var(--simbolo-fondo)" />
+        </g>
+        <path d="M512 512 L512 304 A208 208 0 0 1 720 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <path d="M512 512 L512 720 A208 208 0 0 1 304 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <g style="stroke: var(--simbolo-cuadrante); stroke-width: 26">
+          <line x1="304" y1="512" x2="720" y2="512" />
+          <line x1="512" y1="304" x2="512" y2="720" />
+        </g>
+      </symbol>
+    </svg>
+
+
+    <!--
+      Página de vuelta de Mercado Pago (URL_VUELTA en el servidor de licencias).
+      Muestra cómo salió el pago y abre Cota con el link cota://pago: Cota pasa al frente y
+      valida la licencia en el momento. src/pago.ts elige qué bloque mostrar.
+    -->
+    <main class="flex min-h-dvh flex-col items-center justify-center px-4 py-16 text-center">
+      <svg class="h-14 w-14" aria-hidden="true"><use href="#simbolo" /></svg>
+
+      <section data-estado="aprobado" hidden>
+        <h1 class="mt-8 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[40px]">¡Listo, gracias!</h1>
+        <p class="mx-auto mt-4 max-w-md text-stone-500">Tu pago se aprobó y la licencia se activa sola en Cota. Volvé a la app para seguir trabajando.</p>
+      </section>
+
+      <section data-estado="pendiente" hidden>
+        <h1 class="mt-8 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[40px]">Pago en proceso</h1>
+        <p class="mx-auto mt-4 max-w-md text-stone-500">Mercado Pago todavía no lo acreditó (por ejemplo, si pagaste en efectivo). Cuando se acredite, la licencia se activa sola en Cota: no hace falta hacer nada.</p>
+      </section>
+
+      <section data-estado="rechazado" hidden>
+        <h1 class="mt-8 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[40px]">El pago no se aprobó</h1>
+        <p class="mx-auto mt-4 max-w-md text-stone-500">No se cobró nada. Podés intentar de nuevo desde Cota, en <em>Configuración → Licencia → Abrir Mercado Pago</em>, con otro medio de pago.</p>
+      </section>
+
+      <section data-estado="volver">
+        <h1 class="mt-8 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[40px]">Volvé a Cota</h1>
+        <p class="mx-auto mt-4 max-w-md text-stone-500">Si completaste el pago, la licencia se activa sola en la app.</p>
+      </section>
+
+      <a href="cota://pago" class="boton boton-principal mt-9 min-w-56">Abrir Cota</a>
+      <p class="mt-4 max-w-sm text-[13px] text-stone-500">Si tu navegador pregunta, elegí abrir Cota. Si no se abre, abrila desde el menú o el escritorio.</p>
+      <a href="./" class="mt-10 inline-flex min-h-11 items-center text-[14px] text-stone-500 underline-offset-4 hover:text-stone-900 hover:underline">Ir a la página de Cota</a>
+    </main>
+    <script type="module" src="/src/pago.ts"></script>
+  </body>
+</html>

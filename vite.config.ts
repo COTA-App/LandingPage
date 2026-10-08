@@ -35,5 +35,11 @@ export default defineConfig({
   // En GitHub Pages la página vive en /LandingPage/; con dominio propio, en la raíz.
   // El workflow de publicación pasa la ruta en BASE.
   base: process.env.BASE ?? '/',
-  plugins: [tailwindcss(), completarConfig()]
+  plugins: [tailwindcss(), completarConfig()],
+  build: {
+    rollupOptions: {
+      // pago.html: adonde vuelve Mercado Pago después de pagar (abre Cota con cota://pago).
+      input: { index: 'index.html', pago: 'pago.html' }
+    }
+  }
 })
