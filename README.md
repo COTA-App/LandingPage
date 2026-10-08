@@ -13,7 +13,7 @@ npm run preview   # sirve dist/ para revisarlo
 
 ## Qué se cambia y dónde
 
-- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail, y Microsoft Store dice "Próximamente". Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
+- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail, y Microsoft Store dice "Próximamente". Los precios (mensual y anual) tienen que coincidir con los del servidor. Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
   - `{{clave}}` se reemplaza por el valor;
   - `<!-- si:clave -->…<!-- /si -->` se muestra solo si hay valor;
   - `<!-- no:clave -->…<!-- /no -->` se muestra solo si no hay valor.

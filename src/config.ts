@@ -7,8 +7,9 @@ export const config = {
   descargaExe: 'https://github.com/COTA-App/Downloads/releases/latest/download/Cota-Instalador.exe',
   /** Ficha de Cota en Microsoft Store. Mientras esté vacío, el botón dice "Próximamente". */
   microsoftStore: '',
-  /** Precio mensual en pesos, sin puntos. Tiene que coincidir con PRECIO_MENSUAL_ARS del servidor. */
-  precioMensualArs: 28000,
+  /** Precios en pesos, sin puntos. Tienen que coincidir con PRECIO_MENSUAL_ARS y PRECIO_ANUAL_ARS del servidor. */
+  precioMensualArs: 50000,
+  precioAnualArs: 500000,
   diasPrueba: 14,
   equiposPorLicencia: 3,
   linkedin: '',

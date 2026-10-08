@@ -12,6 +12,9 @@ function completarConfig(): Plugin {
   const valores: Record<string, string> = {
     ...Object.fromEntries(Object.entries(config).map(([k, v]) => [k, String(v)])),
     precioMensual: config.precioMensualArs.toLocaleString('es-AR'),
+    precioAnual: config.precioAnualArs.toLocaleString('es-AR'),
+    // El anual cuesta como 10 meses: "2 meses gratis". Vacío si no ahorra nada.
+    mesesGratis: String(Math.max(0, Math.round(12 - config.precioAnualArs / config.precioMensualArs)) || ''),
     anio: String(new Date().getFullYear())
   }
   return {

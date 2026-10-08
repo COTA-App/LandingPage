@@ -178,20 +178,41 @@
           <p class="rotulo">Precio</p>
           <h2 class="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Simple, como la app.</h2>
 
-          <div class="mx-auto mt-12 max-w-md rounded-2xl bg-white p-8 text-left shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)] sm:p-10">
-            <p class="text-[15px] font-medium text-stone-500">Licencia mensual</p>
-            <p class="mt-2 flex items-baseline gap-1.5">
-              <span class="text-[48px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioMensual}}</span>
-              <span class="text-[15px] text-stone-500">por mes</span>
-            </p>
-            <ul class="mt-8 space-y-3 text-[15px] text-stone-700">
-              <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Hasta {{equiposPorLicencia}} computadoras por licencia</li>
-              <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>{{diasPrueba}} días de prueba, sin tarjeta</li>
-              <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Pagás con Mercado Pago y cancelás cuando quieras</li>
-              <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Si dejás de pagar, tus datos siguen ahí: podés verlos y exportarlos</li>
-            </ul>
-            <a href="{{descargaExe}}" class="boton boton-principal mt-9 w-full">Probar gratis {{diasPrueba}} días</a>
-            <p class="mt-3 text-center text-[13px] text-stone-500">Te suscribís desde la app cuando quieras.</p>
+          <p class="mx-auto mt-4 max-w-xl text-stone-500">Una licencia sirve para hasta {{equiposPorLicencia}} computadoras del estudio. Probala {{diasPrueba}} días gratis, sin tarjeta.</p>
+
+          <div class="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white p-8 text-left shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[15px] font-medium text-stone-500">Mensual</p>
+              <p class="mt-2 flex items-baseline gap-1.5">
+                <span class="text-[40px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioMensual}}</span>
+                <span class="text-[15px] text-stone-500">por mes</span>
+              </p>
+              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Débito automático con Mercado Pago</li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Cancelás cuando quieras</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl bg-white p-8 text-left shadow-[0_0_0_1.5px_var(--color-acento-700),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="flex items-center justify-between gap-2 text-[15px] font-medium text-stone-500">
+                Anual
+                <!-- si:mesesGratis -->
+                <span class="rounded-full bg-emerald-600/12 px-2.5 py-0.5 text-[13px] font-medium text-emerald-700 dark:text-emerald-600">{{mesesGratis}} meses gratis</span>
+                <!-- /si -->
+              </p>
+              <p class="mt-2 flex items-baseline gap-1.5">
+                <span class="text-[40px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioAnual}}</span>
+                <span class="text-[15px] text-stone-500">por año</span>
+              </p>
+              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Pago único, en cuotas o en efectivo</li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Renovás con la misma clave</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mx-auto mt-10 max-w-md">
+            <a href="{{descargaExe}}" class="boton boton-principal w-full">Probar gratis {{diasPrueba}} días</a>
+            <p class="mt-3 text-[13px] text-stone-500">Comprás la licencia desde la app cuando quieras. Si dejás de pagar, tus datos siguen ahí: podés verlos y exportarlos.</p>
           </div>
         </div>
       </section>
