@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/*
+ * Mismo sistema de diseño que la app (COTA/src/index.css): negro tinta #121311 y crema #F4EEE4,
+ * y los grises como la tinta con distintas transparencias, como piden las Human Interface
+ * Guidelines de Apple. Los nombres son los mismos que en la app, así no se separan.
+ * El modo oscuro sigue al sistema (prefers-color-scheme).
+ */
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter Variable", "Inter", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter Variable", "Inter", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+
+  --color-tinta: #121311;
+  --color-crema: #f4eee4;
+
+  --color-white: #fcfaf6;
+  --color-black: #000;
+
+  --color-stone-50: #f4eee4;
+  --color-stone-100: rgb(18 19 17 / 0.05);
+  --color-stone-200: rgb(18 19 17 / 0.09);
+  --color-stone-300: rgb(18 19 17 / 0.16);
+  --color-stone-400: rgb(18 19 17 / 0.4);
+  --color-stone-500: rgb(18 19 17 / 0.62);
+  --color-stone-600: rgb(18 19 17 / 0.7);
+  --color-stone-700: rgb(18 19 17 / 0.82);
+  --color-stone-800: #121311;
+  --color-stone-900: #121311;
+
+  --color-acento-100: rgb(18 19 17 / 0.1);
+  --color-acento-200: rgb(18 19 17 / 0.2);
+  --color-acento-600: #2e2f2b;
+  --color-acento-700: #121311;
+
+  --color-emerald-600: #2aa84a;
+
+  --radius-md: 7px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-white: #1c1d1a;
+
+    --color-stone-50: #121311;
+    --color-stone-100: rgb(244 238 228 / 0.06);
+    --color-stone-200: rgb(244 238 228 / 0.1);
+    --color-stone-300: rgb(244 238 228 / 0.18);
+    --color-stone-400: rgb(244 238 228 / 0.4);
+    --color-stone-500: rgb(244 238 228 / 0.6);
+    --color-stone-600: rgb(244 238 228 / 0.7);
+    --color-stone-700: rgb(244 238 228 / 0.84);
+    --color-stone-800: #f4eee4;
+    --color-stone-900: #f4eee4;
+
+    --color-acento-100: rgb(244 238 228 / 0.14);
+    --color-acento-200: rgb(244 238 228 / 0.24);
+    --color-acento-600: #e2dcd2;
+    --color-acento-700: #f4eee4;
+
+    --color-emerald-600: #30d158;
+  }
+}
+
+:root {
+  color-scheme: light dark;
+  --simbolo-trazo: #121311;
+  --simbolo-fondo: transparent;
+  --simbolo-cuadrante: #121311;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --simbolo-trazo: #f4eee4;
+    --simbolo-fondo: #f4eee4;
+    --simbolo-cuadrante: #121311;
+  }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  @apply bg-stone-50 text-stone-800 antialiased;
+  font-size: 17px;
+  line-height: 1.47;
+  font-feature-settings: "cv11", "ss03";
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--color-acento-200); }
+:focus-visible { outline: 3px solid var(--color-acento-200); outline-offset: 2px; border-radius: 8px; }
+
+@layer components {
+  /* Botones: 44 px de alto como mínimo (tamaño de toque de las HIG). */
+  .boton {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-[15px] font-medium transition-[background-color,opacity,transform] duration-150;
+  }
+  .boton:active { transform: scale(0.98); }
+  .boton-principal { @apply bg-acento-700 text-white hover:bg-acento-600; }
+  .boton-secundario { @apply bg-stone-100 text-stone-800 shadow-[inset_0_0_0_0.5px_var(--color-stone-300)] hover:bg-stone-200; }
+  .boton-inactivo { @apply cursor-default bg-transparent text-stone-500 shadow-[inset_0_0_0_1px_var(--color-stone-300)]; }
+  .boton-inactivo:active { transform: none; }
+
+  /* Captura dentro de un marco de ventana, con la sombra suave de las ventanas de macOS. */
+  .ventana {
+    @apply overflow-hidden rounded-xl bg-white;
+    box-shadow: 0 0 0 0.5px var(--color-stone-300), 0 30px 80px -20px rgb(0 0 0 / 0.28), 0 8px 24px -8px rgb(0 0 0 / 0.12);
+  }
+  .ventana img { display: block; width: 100%; height: auto; }
+
+  .rotulo { @apply text-[13px] font-semibold uppercase tracking-[0.08em] text-stone-500; }
+}
+
+/* Aparición suave al hacer scroll, solo si el navegador la soporta y no se pidió menos movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .aparece {
+      animation: aparecer linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# Cota · página web
+
+Landing de Cota: presentación, capturas, precio y descarga.
+
+Es HTML estático con Vite y Tailwind v4. Usa los mismos colores y nombres que la app (`COTA/src/index.css`), y el modo oscuro sigue al sistema. La página final no lleva JavaScript.
+
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # genera dist/, lo que se publica
+npm run preview   # sirve dist/ para revisarlo
+```
+
+## Qué se cambia y dónde
+
+- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail, y Microsoft Store dice "Próximamente". Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
+  - `{{clave}}` se reemplaza por el valor;
+  - `<!-- si:clave -->…<!-- /si -->` se muestra solo si hay valor;
+  - `<!-- no:clave -->…<!-- /no -->` se muestra solo si no hay valor.
+- **Textos:** `index.html`.
+- **Estilos:** `src/estilos.css`. El bloque `@theme` es copia del de la app. Si cambia allá, copiarlo acá.
+- **Capturas:** `public/capturas/<pantalla>-claro.webp` y `-oscuro.webp`, a 2x (2720×1700). Se sacan de Cota con datos de ejemplo, nunca con datos reales. Para convertirlas: `magick captura.png -quality 82 -define webp:method=6 captura.webp`.
+
+## Descarga del instalador
+
+El botón apunta a `https://github.com/COTA-App/Cota-Descargas/releases/latest/download/Cota-Instalador.exe`:
+- `Cota-Descargas` es un repo **público** que solo tiene releases. El repo de la app es privado y sus descargas piden login.
+- `npm run release`, en el repo de Cota, sube ahí una copia del instalador con ese nombre fijo, así el link siempre baja la última versión.
+
+## Publicación
+
+El repo es público y se publica con **GitHub Pages**, en https://cota-app.github.io/COTA-LandingPage/.
+- Con cada push a `main`, `.github/workflows/publicar.yml` compila y publica sola.
+- La ruta `/COTA-LandingPage/` se pasa en la variable `BASE` (ver `vite.config.ts`).
+- Cuando compres el dominio:
+  1. Cargalo en *Settings → Pages → Custom domain*.
+  2. En el workflow, cambiá `BASE` a `/`.
+
+## Prácticas de Apple
+
+`.claude/skills/` tiene las skills de Human Interface Guidelines de [raintree-technology/apple-hig-skills](https://github.com/raintree-technology/apple-hig-skills), con licencia MIT. Están ahí para que Claude las consulte al cambiar el diseño. Lo que se aplica acá:
+- tipografía del sistema, y jerarquía con peso y tamaño;
+- grises por transparencia;
+- botones de 44 px de alto como mínimo;
+- contraste AA en claro y en oscuro;
+- `prefers-reduced-motion`;
+- el contenido (las capturas) por encima de la decoración.
