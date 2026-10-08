@@ -23,15 +23,15 @@ npm run preview   # sirve dist/ para revisarlo
 
 ## Descarga del instalador
 
-El botón apunta a `https://github.com/COTA-App/Cota-Descargas/releases/latest/download/Cota-Instalador.exe`:
-- `Cota-Descargas` es un repo **público** que solo tiene releases. El repo de la app es privado y sus descargas piden login.
+El botón apunta a `https://github.com/COTA-App/Downloads/releases/latest/download/Cota-Instalador.exe`:
+- `Downloads` es un repo **público** que solo tiene releases. El repo de la app es privado y sus descargas piden login.
 - `npm run release`, en el repo de Cota, sube ahí una copia del instalador con ese nombre fijo, así el link siempre baja la última versión.
 
 ## Publicación
 
-El repo es público y se publica con **GitHub Pages**, en https://cota-app.github.io/COTA-LandingPage/.
+El repo es público y se publica con **GitHub Pages**, en https://cota-app.github.io/LandingPage/.
 - Con cada push a `main`, `.github/workflows/publicar.yml` compila y publica sola.
-- La ruta `/COTA-LandingPage/` se pasa en la variable `BASE` (ver `vite.config.ts`).
+- La ruta `/LandingPage/` se pasa en la variable `BASE` (ver `vite.config.ts`).
 - Cuando compres el dominio:
   1. Cargalo en *Settings → Pages → Custom domain*.
   2. En el workflow, cambiá `BASE` a `/`.

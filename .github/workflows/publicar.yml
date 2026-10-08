@@ -30,7 +30,7 @@ jobs:
       # Con dominio propio, cambiar a BASE=/ (o borrar la variable).
       - run: npm run build
         env:
-          BASE: /COTA-LandingPage/
+          BASE: /LandingPage/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

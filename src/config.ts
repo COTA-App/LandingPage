@@ -4,7 +4,7 @@
 
 export const config = {
   /** Instalador de Windows. Nombre fijo: siempre baja la última versión publicada. */
-  descargaExe: 'https://github.com/COTA-App/Cota-Descargas/releases/latest/download/Cota-Instalador.exe',
+  descargaExe: 'https://github.com/COTA-App/Downloads/releases/latest/download/Cota-Instalador.exe',
   /** Ficha de Cota en Microsoft Store. Mientras esté vacío, el botón dice "Próximamente". */
   microsoftStore: '',
   /** Precio mensual en pesos, sin puntos. Tiene que coincidir con PRECIO_MENSUAL_ARS del servidor. */

@@ -29,7 +29,7 @@ function completarConfig(): Plugin {
 }
 
 export default defineConfig({
-  // En GitHub Pages la página vive en /COTA-LandingPage/; con dominio propio, en la raíz.
+  // En GitHub Pages la página vive en /LandingPage/; con dominio propio, en la raíz.
   // El workflow de publicación pasa la ruta en BASE.
   base: process.env.BASE ?? '/',
   plugins: [tailwindcss(), completarConfig()]
