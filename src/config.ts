@@ -16,5 +16,9 @@ export const config = {
   equiposPorLicencia: 3,
   linkedin: '',
   instagram: '',
-  email: ''
+  email: '',
+  /** Contacto de la política de privacidad (consultas y pedidos de borrado). Siempre se muestra en privacidad.html. */
+  emailPrivacidad: 'manupuey03@gmail.com',
+  /** Fecha de la última versión de la política de privacidad. Cambiarla cada vez que cambie el texto. */
+  privacidadActualizada: '9 de octubre de 2026'
 }

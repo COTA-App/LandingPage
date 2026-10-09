@@ -112,6 +112,14 @@ p { text-wrap: pretty; }
   .ventana img { display: block; width: 100%; height: auto; }
 
   .rotulo { @apply text-[13px] font-semibold uppercase tracking-[0.08em] text-stone-500; }
+
+  /* Texto largo (privacidad): una columna de lectura cómoda y jerarquía con peso y tamaño. */
+  .texto { @apply text-stone-700; }
+  .texto h2 { @apply mt-12 text-[22px] font-semibold leading-[1.25] tracking-[-0.01em] text-stone-900; }
+  .texto p, .texto ul { @apply mt-3; }
+  .texto ul { @apply list-disc space-y-1.5 pl-5 marker:text-stone-400; }
+  .texto strong { @apply font-semibold text-stone-900; }
+  .texto a { @apply text-stone-900 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-900; }
 }
 
 /* Aparición suave al hacer scroll, solo si el navegador la soporta y no se pidió menos movimiento. */

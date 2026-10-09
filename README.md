@@ -28,6 +28,12 @@ npm run preview   # sirve dist/ para revisarlo
 - Abre Cota con el link `cota://pago`: Cota pasa al frente, valida la licencia en el momento y muestra *Configuración → Licencia*.
 - El mensaje es solo informativo: la licencia se activa por lo que el servidor le pregunta a Mercado Pago, nunca por esta página.
 
+## Política de privacidad
+
+`privacidad.html` es la política de privacidad: su URL es la que se carga en Microsoft Store (*Propiedades*). Está enlazada desde el pie de la portada.
+- Describe lo que hace Cota de verdad: qué envía al servidor de licencias, qué se guarda de los pagos y qué queda solo en la PC. Si eso cambia en la app o en el servidor, hay que actualizar el texto.
+- Cada vez que cambie el texto, actualizar `privacidadActualizada` en `src/config.ts`. El email de contacto es `emailPrivacidad`.
+
 ## Descarga del instalador
 
 El botón apunta a `https://github.com/COTA-App/Downloads/releases/latest/download/Cota-Instalador.exe`:

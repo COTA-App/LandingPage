@@ -39,7 +39,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // pago.html: adonde vuelve Mercado Pago después de pagar (abre Cota con cota://pago).
-      input: { index: 'index.html', pago: 'pago.html' }
+      // privacidad.html: la política de privacidad (la pide Microsoft Store).
+      input: { index: 'index.html', pago: 'pago.html', privacidad: 'privacidad.html' }
     }
   }
 })

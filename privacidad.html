@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cota · Privacidad</title>
+    <meta name="description" content="Qué datos usa Cota, para qué y cómo pedir que se borren." />
+    <meta name="theme-color" content="#f4eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/marca/cota-icono-claro.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/marca/icono-180.png" />
+    <link rel="stylesheet" href="/src/estilos.css" />
+  </head>
+  <body>
+    <!-- Símbolo de Cota, definido una vez y reutilizado. Toma los colores del modo claro u oscuro. -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <symbol id="simbolo" viewBox="182 182 660 660">
+        <g style="stroke: var(--simbolo-trazo); stroke-width: 26">
+          <line x1="200" y1="512" x2="824" y2="512" />
+          <line x1="512" y1="200" x2="512" y2="824" />
+          <circle cx="512" cy="512" r="208" style="fill: var(--simbolo-fondo)" />
+        </g>
+        <path d="M512 512 L512 304 A208 208 0 0 1 720 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <path d="M512 512 L512 720 A208 208 0 0 1 304 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <g style="stroke: var(--simbolo-cuadrante); stroke-width: 26">
+          <line x1="304" y1="512" x2="720" y2="512" />
+          <line x1="512" y1="304" x2="512" y2="720" />
+        </g>
+      </symbol>
+    </svg>
+
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">Ir al contenido</a>
+
+    <!-- Barra superior translúcida, igual que en la portada -->
+    <header class="sticky top-0 z-40 border-b border-stone-200 bg-stone-50/75 backdrop-blur-xl backdrop-saturate-150">
+      <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Principal">
+        <a href="./" class="flex min-h-11 items-center gap-2.5" aria-label="Cota, inicio">
+          <svg class="h-6 w-6" aria-hidden="true"><use href="#simbolo" /></svg>
+          <span class="text-[15px] font-light tracking-[0.4em] text-stone-900">COTA</span>
+        </a>
+        <a href="./#descargar" class="boton boton-principal min-h-9 px-4 text-[14px]">Descargar</a>
+      </nav>
+    </header>
+
+    <!--
+      Política de privacidad (la URL se carga en Microsoft Store → Propiedades).
+      Tiene que coincidir con lo que hace Cota de verdad: si cambia lo que se envía al servidor de
+      licencias (COTA/core/licencia.ts, supabase/functions/licencias), actualizar este texto y
+      privacidadActualizada en src/config.ts.
+    -->
+    <main id="contenido" class="mx-auto max-w-[680px] px-4 pb-24 pt-16 sm:px-6 sm:pt-24">
+      <p class="rotulo">Política de privacidad</p>
+      <h1 class="mt-3 text-[40px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Tus datos son tuyos.</h1>
+      <p class="mt-4 text-[13px] text-stone-500">Última actualización: {{privacidadActualizada}}</p>
+
+      <!-- Resumen: lo importante, antes del detalle -->
+      <div class="mt-10 rounded-2xl bg-white p-6 shadow-[0_0_0_0.5px_var(--color-stone-300)] sm:p-8">
+        <h2 class="text-[17px] font-semibold text-stone-900">En pocas palabras</h2>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Tus proyectos, presupuestos y archivos quedan <strong class="font-semibold text-stone-900">solo en tu computadora</strong>. Nunca los recibimos.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Para la licencia guardamos tu email y un identificador de cada PC donde la activás.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Los pagos los procesa Mercado Pago. No vemos ni guardamos los datos de tu tarjeta.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>No hay publicidad, no vendemos datos y no medimos cómo usás la app.</span></li>
+        </ul>
+      </div>
+
+      <article class="texto">
+        <h2>Quién es responsable</h2>
+        <p>Cota es una app desarrollada por Manuel Pueyrredon, en la Argentina. Para cualquier consulta sobre tus datos, escribí a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>.</p>
+
+        <h2>Lo que queda en tu computadora</h2>
+        <p>Todo lo que cargás en Cota (proyectos, clientes, presupuestos, pagos, compras, fotos y documentos) se guarda en una carpeta de tu computadora. Cota no lo sube a ningún servidor. Hacer respaldos de esa carpeta depende de vos: en <em>Configuración</em> hay un botón para abrirla.</p>
+
+        <h2>Lo que Cota envía por internet</h2>
+        <p>Cota se conecta a internet solo para dos cosas.</p>
+        <p><strong>La licencia.</strong> Al activar, validar o liberar una PC, Cota envía a nuestro servidor:</p>
+        <ul>
+          <li>la clave de la licencia;</li>
+          <li>un identificador al azar de la PC, que crea Cota y no sirve para nada fuera de la app;</li>
+          <li>el nombre de la PC, para que la reconozcas en la lista de equipos activados;</li>
+          <li>la versión de Cota.</li>
+        </ul>
+        <p>El servidor también ve la dirección IP desde la que llega el pedido. La usamos solo para frenar abusos, como alguien probando claves al azar, y se borra sola en alrededor de un día.</p>
+        <p><strong>La cotización del dólar.</strong> Cota consulta <a href="https://dolarapi.com" rel="noopener" target="_blank">dolarapi.com</a> para mostrar los montos en dólares. Ese pedido no lleva ningún dato tuyo.</p>
+
+        <h2>Pagos</h2>
+        <p>La suscripción se paga con <strong>Mercado Pago</strong>. Cuando pagás, cargás tus datos en Mercado Pago, no en Cota, y se rigen por su <a href="https://www.mercadopago.com.ar/privacidad" rel="noopener" target="_blank">política de privacidad</a>. De ese pago guardamos:</p>
+        <ul>
+          <li>el email con el que te suscribiste, para asociarlo a tu licencia y poder ayudarte;</li>
+          <li>el número de la suscripción y de cada pago, y si se aprobó, para saber hasta cuándo está pagada la licencia.</li>
+        </ul>
+        <p>Nunca vemos ni guardamos los números de tu tarjeta ni tus datos bancarios.</p>
+
+        <h2>Para qué usamos los datos</h2>
+        <p>Solo para que la licencia funcione: saber si está pagada, en qué PCs está activada y no pasarse del límite de equipos. También para responderte si nos escribís. No los usamos para publicidad, no los vendemos y no los compartimos con nadie para fines propios.</p>
+
+        <h2>Con quién se comparten</h2>
+        <p>Para dar el servicio usamos estos proveedores, que tratan los datos en nuestro nombre:</p>
+        <ul>
+          <li><strong>Supabase</strong>, donde funciona el servidor de licencias y se guarda la base de datos.</li>
+          <li><strong>Mercado Pago</strong>, que procesa los pagos.</li>
+        </ul>
+        <p>Si descargás Cota desde Microsoft Store, Microsoft trata los datos de esa descarga según su propia política. Fuera de esto, solo compartiríamos datos si una ley o una autoridad competente lo exige.</p>
+
+        <h2>Cuánto tiempo los guardamos</h2>
+        <p>Los datos de la licencia se guardan mientras exista. Si pedís que la borremos, eliminamos tu email y los equipos asociados. Solo conservamos el registro de los pagos que haga falta por obligaciones legales o impositivas.</p>
+
+        <h2>Seguridad</h2>
+        <p>La comunicación con el servidor viaja cifrada (HTTPS). La base de datos de licencias no es accesible desde afuera: solo la usa el propio servidor.</p>
+
+        <h2>Tus derechos</h2>
+        <p>Podés pedirnos en cualquier momento ver, corregir o borrar tus datos, escribiendo a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Te respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para corregir o borrar.</p>
+        <p>La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
+
+        <h2>Menores de edad</h2>
+        <p>Cota es una herramienta profesional para estudios de arquitectura. No está pensada para menores de edad y no recopilamos datos de menores a sabiendas.</p>
+
+        <h2>Cambios en esta política</h2>
+        <p>Si cambia lo que hace Cota con tus datos, actualizamos esta página y la fecha de arriba. Si el cambio es importante, también te avisamos por email.</p>
+      </article>
+
+      <a href="./" class="mt-14 inline-flex min-h-11 items-center text-[14px] text-stone-500 underline-offset-4 hover:text-stone-900 hover:underline">Volver a la página de Cota</a>
+    </main>
+
+    <footer class="border-t border-stone-200">
+      <div class="mx-auto flex max-w-6xl items-center gap-2.5 px-4 py-10 text-[13px] text-stone-500 sm:px-6">
+        <svg class="h-5 w-5" aria-hidden="true"><use href="#simbolo" /></svg>
+        <span>© {{anio}} Cota</span>
+      </div>
+    </footer>
+  </body>
+</html>
