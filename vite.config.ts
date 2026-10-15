@@ -13,6 +13,9 @@ function completarConfig(): Plugin {
     ...Object.fromEntries(Object.entries(config).map(([k, v]) => [k, String(v)])),
     precioMensual: config.precioMensualArs.toLocaleString('es-AR'),
     precioAnual: config.precioAnualArs.toLocaleString('es-AR'),
+    // Lo que sale por mes pagando el año, redondeado a la centena: 299.000 → "24.900".
+    anualPorMes: (Math.round(config.precioAnualArs / 12 / 100) * 100).toLocaleString('es-AR'),
+    precioFundador: config.precioFundadorArs && config.cuposFundadores ? config.precioFundadorArs.toLocaleString('es-AR') : '',
     // El anual cuesta como 10 meses: "2 meses gratis". Vacío si no ahorra nada.
     mesesGratis: String(Math.max(0, Math.round(12 - config.precioAnualArs / config.precioMensualArs)) || ''),
     anio: String(new Date().getFullYear())
