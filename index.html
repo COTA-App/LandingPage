@@ -215,12 +215,23 @@
                 <span class="text-[40px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioAnual}}</span>
                 <span class="text-[15px] text-stone-500">por año</span>
               </p>
+              <p class="mt-1.5 text-[14px] text-stone-500">Equivale a $ {{anualPorMes}} por mes</p>
               <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
                 <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Pago único, en cuotas o en efectivo</li>
                 <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Renovás con la misma clave</li>
               </ul>
             </div>
           </div>
+
+          <!-- si:precioFundador -->
+          <div class="mx-auto mt-4 max-w-3xl rounded-2xl bg-emerald-600/8 p-6 text-left shadow-[0_0_0_0.5px_var(--color-emerald-600)]">
+            <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[15px] font-medium text-stone-900">
+              <span class="shrink-0 whitespace-nowrap rounded-full bg-emerald-600/12 px-2.5 py-0.5 text-[13px] font-medium text-emerald-700 dark:text-emerald-600">Precio fundador</span>
+              Para los primeros {{cuposFundadores}} estudios
+            </p>
+            <p class="mt-2 text-[15px] text-stone-600">Suscribiéndote al plan mensual desde la app, pagás <span class="text-stone-400 line-through">$ {{precioMensual}}</span> <strong class="font-semibold text-stone-900">$ {{precioFundador}} por mes</strong>, para siempre. Se aplica solo, sin código.</p>
+          </div>
+          <!-- /si -->
 
           <div class="mx-auto mt-10 max-w-md">
             <a href="{{descargaExe}}" class="boton boton-principal w-full">Probar gratis {{diasPrueba}} días</a>

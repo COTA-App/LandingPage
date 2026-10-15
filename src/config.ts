@@ -10,8 +10,15 @@ export const config = {
   /** Ficha de Cota en el App Store (iPhone y iPad). Mientras esté vacío, dice "Próximamente para iPhone y iPad". */
   appStore: '',
   /** Precios en pesos, sin puntos. Tienen que coincidir con PRECIO_MENSUAL_ARS y PRECIO_ANUAL_ARS del servidor. */
-  precioMensualArs: 50000,
-  precioAnualArs: 500000,
+  precioMensualArs: 29900,
+  precioAnualArs: 299000,
+  /**
+   * Precio fundador: los primeros `cuposFundadores` estudios pagan esto por mes, de por vida.
+   * Tiene que coincidir con FUNDADORES_PRECIO_MENSUAL_ARS y FUNDADORES_CUPOS del servidor.
+   * En 0, la franja de fundadores no se muestra (por ejemplo, cuando se llenen los lugares).
+   */
+  precioFundadorArs: 14900,
+  cuposFundadores: 10,
   diasPrueba: 14,
   equiposPorLicencia: 3,
   linkedin: '',
