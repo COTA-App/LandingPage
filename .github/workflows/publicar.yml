@@ -27,10 +27,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # Con dominio propio, cambiar a BASE=/ (o borrar la variable).
+      # Con dominio propio (cota-arq.com) la página vive en la raíz: BASE=/ (el default).
       - run: npm run build
-        env:
-          BASE: /LandingPage/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

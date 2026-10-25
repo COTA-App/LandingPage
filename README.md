@@ -42,12 +42,11 @@ El botón apunta a `https://github.com/COTA-App/Downloads/releases/latest/downlo
 
 ## Publicación
 
-El repo es público y se publica con **GitHub Pages**, en https://cota-app.github.io/LandingPage/.
+El repo es público y se publica con **GitHub Pages**, en https://cota-arq.com.
 - Con cada push a `main`, `.github/workflows/publicar.yml` compila y publica sola.
-- La ruta `/LandingPage/` se pasa en la variable `BASE` (ver `vite.config.ts`).
-- Cuando compres el dominio:
-  1. Cargalo en *Settings → Pages → Custom domain*.
-  2. En el workflow, cambiá `BASE` a `/`.
+- El dominio está cargado en *Settings → Pages → Custom domain*; el DNS está en Cloudflare
+  (registros A/AAAA de GitHub Pages en `cota-arq.com` y CNAME `www` → `cota-app.github.io`, sin proxy).
+- La página vive en la raíz (`BASE` = `/`, el default de `vite.config.ts`).
 
 ## Prácticas de Apple
 
