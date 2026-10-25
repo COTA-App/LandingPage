@@ -98,7 +98,7 @@
           <li><strong>La cotización del dólar.</strong> Cota consulta <a href="https://dolarapi.com" rel="noopener" target="_blank">dolarapi.com</a> para mostrar los montos en dólares. Ese pedido no lleva ningún dato tuyo.</li>
           <li><strong>Versiones nuevas.</strong> Cota consulta en GitHub si hay una versión nueva, sin enviar datos tuyos.</li>
         </ul>
-        <p>El servidor también ve la dirección IP desde la que llega cada pedido. La usamos solo para frenar abusos, como alguien probando contraseñas, y se borra sola en menos de un día.</p>
+        <p>El servidor también ve la dirección IP desde la que llega cada pedido. La usamos solo para frenar abusos, como alguien probando contraseñas, y la guardamos solo mientras hace falta para eso: los registros viejos se borran a medida que llegan pedidos nuevos.</p>
 
         <h2>Mails que te mandamos</h2>
         <p>Solo te escribimos por tu cuenta: para confirmar tu email, recuperar tu contraseña, avisarte que te compartieron un proyecto y avisos importantes de tu suscripción o de estas políticas. No mandamos publicidad.</p>
@@ -118,7 +118,7 @@
         <p>Además de las personas con quienes vos compartís un proyecto, usamos estos proveedores, que tratan los datos en nuestro nombre y solo para darte el servicio:</p>
         <ul>
           <li>el proveedor de servidores donde funcionan el servidor de Cota y su base de datos;</li>
-          <li>el servicio con el que mandamos los mails de tu cuenta;</li>
+          <li>Resend, el servicio con el que mandamos los mails de tu cuenta;</li>
           <li><strong>Google</strong>, si entrás con tu cuenta de Google;</li>
           <li><strong>Mercado Pago</strong>, que procesa los pagos;</li>
           <li><strong>Supabase</strong>, donde funciona el servidor de licencias de las versiones anteriores de Cota (2.x), mientras siga en uso.</li>
@@ -129,13 +129,13 @@
         <p>Tu cuenta y tus proyectos se guardan mientras exista tu cuenta. Si dejás de pagar, no se borra nada: tus proyectos quedan en solo lectura.</p>
         <p>Si pedís que borremos tu cuenta, eliminamos tu email, tu nombre, tus sesiones y todos los proyectos, clientes, gremios y archivos de tu espacio. Los proyectos tuyos que compartiste dejan de estar disponibles para los invitados. Lo que cargaste en proyectos de otras personas queda en esos proyectos, que son de su dueño. Solo conservamos el registro de los pagos que haga falta por obligaciones legales o impositivas. La copia que quede en tu computadora no la podemos borrar nosotros.</p>
         <p>El identificador anónimo de la prueba gratis se guarda para que la prueba siga siendo una por computadora. Si pedís que lo borremos, lo eliminamos.</p>
-        <p>Los registros técnicos se borran solos: las direcciones IP del límite de pedidos, en menos de un día; los links para confirmar el email o cambiar la contraseña, al usarse o al vencer.</p>
+        <p>Los registros técnicos no se guardan más de lo necesario: las direcciones IP del límite de pedidos se borran cuando ya no sirven para frenar abusos, y los links para confirmar el email o cambiar la contraseña dejan de servir al usarse o al vencer.</p>
 
         <h2>Seguridad</h2>
         <p>La comunicación con el servidor viaja cifrada (HTTPS). Las contraseñas, las sesiones y los links que te mandamos por mail se guardan cifrados de forma que no se pueden recuperar. El servidor revisa en cada pedido que tengas permiso sobre lo que pedís, y la base de datos no es accesible desde afuera: solo la usa el propio servidor. Hay un límite de intentos para entrar, contra quien quiera adivinar contraseñas.</p>
 
         <h2>Tus derechos</h2>
-        <p>Podés pedirnos en cualquier momento ver, corregir o borrar tus datos, o una copia de tus proyectos, escribiendo a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Tu nombre lo podés cambiar vos mismo desde la app. Te respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para corregir o borrar.</p>
+        <p>Podés pedirnos en cualquier momento ver, corregir o borrar tus datos, o una copia de tus proyectos, escribiendo a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Te respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para corregir o borrar.</p>
         <p>La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
 
         <h2>Datos de otras personas</h2>
