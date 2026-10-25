@@ -212,43 +212,68 @@
       </div>
 
       <!-- Precio -->
+      <!--
+        Los planes y precios salen de src/config.ts (planes). Tienen que coincidir con el servidor y la
+        app (Cota-App/docs/cobros.md, paquetes/compartido/src/planes.ts). La página no lleva JavaScript:
+        sin selector de mensual o anual, cada tarjeta muestra los dos.
+      -->
       <section id="precio" class="border-t border-stone-200 py-20 sm:py-28">
         <div class="aparece mx-auto max-w-6xl px-4 text-center sm:px-6">
           <p class="rotulo">Precio</p>
-          <h2 class="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Simple, como la app.</h2>
+          <h2 class="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Un plan para cada estudio.</h2>
 
-          <p class="mx-auto mt-4 max-w-xl text-stone-500">Una sola suscripción para la app y la nube. Probala {{diasPrueba}} días gratis, sin tarjeta y sin crear cuenta.</p>
+          <p class="mx-auto mt-4 max-w-xl text-stone-500">Cada plan incluye la app y la nube. Probala {{diasPrueba}} días gratis, sin tarjeta y sin crear cuenta.</p>
 
-          <div class="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl bg-white p-8 text-left shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
-              <p class="text-[15px] font-medium text-stone-500">Mensual</p>
-              <p class="mt-2 flex items-baseline gap-1.5">
-                <span class="text-[40px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioMensual}}</span>
+          <div class="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
+            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[17px] font-semibold text-stone-900">Independiente</p>
+              <p class="mt-1 text-[14px] text-stone-500">Para quien trabaja solo</p>
+              <p class="mt-5 flex items-baseline gap-1.5">
+                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{independienteMensual}}</span>
                 <span class="text-[15px] text-stone-500">por mes</span>
               </p>
+              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{independienteAnual}} por año: dos meses gratis</p>
               <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Débito automático con Mercado Pago</li>
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Cancelás cuando quieras</li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Tu cuenta en {{independientePcs}} PCs, por ejemplo la del estudio y la notebook</span></li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Si entrás en otra, se libera sola la que usaste hace más tiempo</span></li>
               </ul>
             </div>
-            <div class="rounded-2xl bg-white p-8 text-left shadow-[0_0_0_1.5px_var(--color-acento-700),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
-              <p class="text-[15px] font-medium text-stone-500">Anual</p>
-              <p class="mt-2 flex items-baseline gap-1.5">
-                <span class="text-[40px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$ {{precioAnual}}</span>
-                <span class="text-[15px] text-stone-500">por año</span>
+            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_1.5px_var(--color-acento-700),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[17px] font-semibold text-stone-900">Estudio</p>
+              <p class="mt-1 text-[14px] text-stone-500">Hasta {{estudioPersonas}} personas</p>
+              <p class="mt-5 flex items-baseline gap-1.5">
+                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{estudioMensual}}</span>
+                <span class="text-[15px] text-stone-500">por mes</span>
               </p>
-              <p class="mt-1.5 text-[14px] text-stone-500">Equivale a $ {{anualPorMes}} por mes</p>
+              <p class="mt-1.5 text-[14px] font-medium text-acento-700">$&nbsp;{{estudioPorPersona}} por persona</p>
+              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{estudioAnual}} por año: dos meses gratis</p>
               <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Pago único, en cuotas o en efectivo</li>
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Lo renovás desde la app</li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Tu equipo se suma con un código: cada persona crea su cuenta y lo carga</span></li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Ves quién lo usa y liberás un lugar cuando alguien se va</span></li>
+              </ul>
+            </div>
+            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[17px] font-semibold text-stone-900">Estudio+</p>
+              <p class="mt-1 text-[14px] text-stone-500">Hasta {{estudioPlusPersonas}} personas</p>
+              <p class="mt-5 flex items-baseline gap-1.5">
+                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{estudioPlusMensual}}</span>
+                <span class="text-[15px] text-stone-500">por mes</span>
+              </p>
+              <p class="mt-1.5 text-[14px] font-medium text-acento-700">$&nbsp;{{estudioPlusPorPersona}} por persona</p>
+              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{estudioPlusAnual}} por año: dos meses gratis</p>
+              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Todo lo del plan Estudio, para equipos más grandes</span></li>
+                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Cada persona en su PC, también sin conexión</span></li>
               </ul>
             </div>
           </div>
 
+          <p class="mx-auto mt-6 max-w-3xl text-[15px] text-stone-600">¿Son más de {{estudioPlusPersonas}}? <a href="mailto:{{contacto}}" class="font-medium text-acento-700 underline underline-offset-2">Escribinos</a> y armamos un plan a medida.</p>
+
           <ul class="mx-auto mt-6 flex max-w-3xl flex-col gap-2 text-left text-[15px] text-stone-600 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Tus proyectos en la nube</li>
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Compartir sin límite de invitados</li>
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Cota en {{equiposPorCuenta}} PC a la vez, también sin conexión</li>
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Mensual con débito automático: cancelás cuando quieras</li>
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Anual en un pago, en cuotas o en efectivo</li>
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Proyectos en la nube y compartir sin límite de invitados</li>
           </ul>
 
           <div class="mx-auto mt-10 max-w-md">

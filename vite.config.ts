@@ -8,13 +8,31 @@ import { config } from './src/config.ts'
  *   <!-- si:clave --> … <!-- /si -->   se deja solo si el valor no está vacío
  *   <!-- no:clave --> … <!-- /no -->   se deja solo si el valor está vacío
  */
+const pesos = (n: number) => n.toLocaleString('es-AR')
+/** Redondeado a la centena: 299.000 / 12 → "24.900". */
+const centena = (n: number) => pesos(Math.round(n / 100) * 100)
+
+/** Los valores de cada plan para el HTML: `{{estudioMensual}}`, `{{estudioPorPersona}}`, `{{estudioPersonas}}`… */
+function valoresDePlanes(): Record<string, string> {
+  const { independiente, estudio, estudioPlus } = config.planes
+  const valores: Record<string, string> = { independientePcs: String(independiente.pcs) }
+  for (const [nombre, plan] of Object.entries({ independiente, estudio, estudioPlus })) {
+    valores[`${nombre}Mensual`] = pesos(plan.mensualArs)
+    valores[`${nombre}Anual`] = pesos(plan.anualArs)
+  }
+  for (const [nombre, plan] of Object.entries({ estudio, estudioPlus })) {
+    valores[`${nombre}Personas`] = String(plan.personas)
+    valores[`${nombre}PorPersona`] = centena(plan.mensualArs / plan.personas)
+  }
+  return valores
+}
+
 function completarConfig(): Plugin {
   const valores: Record<string, string> = {
     ...Object.fromEntries(Object.entries(config).map(([k, v]) => [k, String(v)])),
-    precioMensual: config.precioMensualArs.toLocaleString('es-AR'),
-    precioAnual: config.precioAnualArs.toLocaleString('es-AR'),
-    // Lo que sale por mes pagando el año, redondeado a la centena: 299.000 → "24.900".
-    anualPorMes: (Math.round(config.precioAnualArs / 12 / 100) * 100).toLocaleString('es-AR'),
+    ...valoresDePlanes(),
+    // Adónde escribir para un plan a medida: el mail de contacto, o si no hay, el de privacidad.
+    contacto: config.email || config.emailPrivacidad,
     anio: String(new Date().getFullYear())
   }
   return {

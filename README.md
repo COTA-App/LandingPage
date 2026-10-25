@@ -13,7 +13,7 @@ npm run preview   # sirve dist/ para revisarlo
 
 ## Qué se cambia y dónde
 
-- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail (Microsoft Store, si se vacía, vuelve a decir "Próximamente"). Los precios (mensual y anual), los días de prueba y las PCs por cuenta tienen que coincidir con los del servidor (`paquetes/compartido/src/planes.ts` en el repo de Cota). La landing no muestra descuentos. Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
+- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail (Microsoft Store, si se vacía, vuelve a decir "Próximamente"). Los planes (Independiente, Estudio y Estudio+, con sus precios mensual y anual, sus PCs y sus personas) y los días de prueba tienen que coincidir con los del servidor (`paquetes/compartido/src/planes.ts` y `PRECIO_<NIVEL>_<PERIODO>_ARS` en el repo de Cota). La landing no muestra descuentos. Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
   - `{{clave}}` se reemplaza por el valor;
   - `<!-- si:clave -->…<!-- /si -->` se muestra solo si hay valor;
   - `<!-- no:clave -->…<!-- /no -->` se muestra solo si no hay valor.
