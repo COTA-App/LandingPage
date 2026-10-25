@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cota · Condiciones del servicio</title>
+    <meta name="description" content="Las reglas para usar Cota: la cuenta, la prueba gratis, la suscripción, tus datos y lo que podemos y no podemos garantizar." />
+    <meta name="theme-color" content="#f4eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/marca/cota-icono-claro.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/marca/icono-180.png" />
+    <link rel="stylesheet" href="/src/estilos.css" />
+  </head>
+  <body>
+    <!-- Símbolo de Cota, definido una vez y reutilizado. Toma los colores del modo claro u oscuro. -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <symbol id="simbolo" viewBox="182 182 660 660">
+        <g style="stroke: var(--simbolo-trazo); stroke-width: 26">
+          <line x1="200" y1="512" x2="824" y2="512" />
+          <line x1="512" y1="200" x2="512" y2="824" />
+          <circle cx="512" cy="512" r="208" style="fill: var(--simbolo-fondo)" />
+        </g>
+        <path d="M512 512 L512 304 A208 208 0 0 1 720 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <path d="M512 512 L512 720 A208 208 0 0 1 304 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <g style="stroke: var(--simbolo-cuadrante); stroke-width: 26">
+          <line x1="304" y1="512" x2="720" y2="512" />
+          <line x1="512" y1="304" x2="512" y2="720" />
+        </g>
+      </symbol>
+    </svg>
+
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">Ir al contenido</a>
+
+    <!-- Barra superior translúcida, igual que en la portada -->
+    <header class="sticky top-0 z-40 border-b border-stone-200 bg-stone-50/75 backdrop-blur-xl backdrop-saturate-150">
+      <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Principal">
+        <a href="./" class="flex min-h-11 items-center gap-2.5" aria-label="Cota, inicio">
+          <svg class="h-6 w-6" aria-hidden="true"><use href="#simbolo" /></svg>
+          <span class="text-[15px] font-light tracking-[0.4em] text-stone-900">COTA</span>
+        </a>
+        <a href="./#descargar" class="boton boton-principal min-h-9 px-4 text-[14px]">Descargar</a>
+      </nav>
+    </header>
+
+    <!--
+      Condiciones del servicio (la URL se carga en Google Cloud → pantalla de consentimiento de OAuth,
+      para entrar con Google, y se enlaza desde "Crear una cuenta" en la app).
+      Tiene que coincidir con lo que hace Cota de verdad: si cambian los planes, la prueba o qué pasa
+      al dejar de pagar (Cota-App/docs/cobros.md, paquetes/compartido/src/planes.ts), actualizar este
+      texto y terminosActualizados en src/config.ts.
+    -->
+    <main id="contenido" class="mx-auto max-w-[680px] px-4 pb-24 pt-16 sm:px-6 sm:pt-24">
+      <p class="rotulo">Condiciones del servicio</p>
+      <h1 class="mt-3 text-[40px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Las reglas, claras.</h1>
+      <p class="mt-4 text-[13px] text-stone-500">Última actualización: {{terminosActualizados}}</p>
+
+      <!-- Resumen: lo importante, antes del detalle -->
+      <div class="mt-10 rounded-2xl bg-white p-6 shadow-[0_0_0_0.5px_var(--color-stone-300)] sm:p-8">
+        <h2 class="text-[17px] font-semibold text-stone-900">En pocas palabras</h2>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Probás Cota {{diasPrueba}} días gratis, sin tarjeta y sin cuenta. Después, para seguir editando, hace falta una suscripción.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Si dejás de pagar, <strong class="font-semibold text-stone-900">no se borra nada</strong>: tus proyectos quedan para ver, exportar y respaldar.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Tus proyectos son tuyos. Los guardamos para vos y para quienes vos elijas.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Cota es una herramienta: los presupuestos y las decisiones de obra son responsabilidad de cada profesional.</span></li>
+        </ul>
+      </div>
+
+      <article class="texto">
+        <h2>Qué es Cota y quién la da</h2>
+        <p>Cota es una app para gestionar proyectos, presupuestos y obras de estudios de arquitectura, con una versión de escritorio que funciona sin conexión y un servicio en la nube para guardar y compartir proyectos. La desarrolla y la ofrece Manuel Pueyrredon, en la Argentina (“nosotros”). Podés escribirnos a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>.</p>
+        <p>Al usar Cota o crear una cuenta aceptás estas condiciones y la <a href="privacidad.html">política de privacidad</a>. Si no estás de acuerdo, no uses Cota.</p>
+
+        <h2>Tu cuenta</h2>
+        <ul>
+          <li>Para crear una cuenta tenés que ser mayor de 18 años y usar un email que sea tuyo.</li>
+          <li>La cuenta es personal: no la compartas con otras personas. Para trabajar con otros, compartí tus proyectos.</li>
+          <li>Cuidá tu contraseña. Si creés que alguien entró a tu cuenta, cambiala y avisanos.</li>
+          <li>Podés entrar con mail y contraseña o con tu cuenta de Google.</li>
+        </ul>
+
+        <h2>Prueba gratis</h2>
+        <p>Cada computadora tiene {{diasPrueba}} días de prueba gratis desde la primera vez que se abre Cota, sin cuenta ni tarjeta. Es una por computadora: reinstalar Cota o borrar sus datos no la reinicia. Al terminar, Cota queda en solo lectura hasta que te suscribas.</p>
+
+        <h2>Suscripción y pagos</h2>
+        <p>Una suscripción da acceso a todo Cota: la app de escritorio, tus proyectos en la nube y compartirlos. Es de tu cuenta y se usa en {{equiposPorCuenta}} computadora a la vez; para usarla en otra, liberás la anterior desde la app.</p>
+        <ul>
+          <li><strong>Mensual:</strong> se cobra sola cada mes con Mercado Pago, hasta que la canceles.</li>
+          <li><strong>Anual:</strong> un pago único que vale un año. No se renueva sola: Cota te avisa antes de que venza.</li>
+        </ul>
+        <p>Los precios son los que se muestran en esta página y en la app al momento de pagar, en pesos argentinos. Los pagos los procesa Mercado Pago, con sus propias condiciones. Si cambiamos el precio, te avisamos por email al menos 30 días antes; el cambio se aplica desde el siguiente cobro y podés cancelar antes, sin costo.</p>
+        <p><strong>Cancelar.</strong> La suscripción mensual se cancela desde la app, en cualquier momento. Seguís teniendo acceso hasta el final del período que ya pagaste, y no se te vuelve a cobrar.</p>
+        <p><strong>Arrepentirte.</strong> Podés arrepentirte de una compra dentro de los 10 días corridos desde que pagaste, sin dar motivos, escribiéndonos a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Te devolvemos el total por el mismo medio de pago, como establece la Ley 24.240 de Defensa del Consumidor.</p>
+
+        <h2>Si dejás de pagar</h2>
+        <p>No se borra nada. Tu cuenta y tus proyectos quedan en <strong>solo lectura</strong>: podés verlos, exportar presupuestos a PDF y respaldarlos, pero no editarlos. Los proyectos que compartiste quedan en solo lectura también para tus invitados. Al volver a pagar, todo sigue como estaba.</p>
+
+        <h2>Proyectos compartidos y cuentas gratis</h2>
+        <p>Podés compartir tus proyectos con las personas que quieras, para que los vean o los editen, sin costo para ellas. Quien recibe un proyecto puede entrar con una cuenta gratis, que sirve para ver y editar lo que le compartieron, según el permiso que le dieron. Para tener proyectos propios en la nube hace falta una suscripción.</p>
+        <p>Quien comparte un proyecto es responsable de con quién lo hace. Cualquier persona con acceso ve el proyecto completo, incluidos honorarios y cobros. Podés cambiar el permiso o quitar el acceso cuando quieras.</p>
+
+        <h2>Tus datos</h2>
+        <p>Lo que cargás en Cota es tuyo. Para darte el servicio, nos permitís guardarlo, copiarlo entre tus computadoras y el servidor, y mostrárselo a las personas con quienes lo compartís. No lo usamos para nada más. Cómo tratamos los datos personales está en la <a href="privacidad.html">política de privacidad</a>.</p>
+        <p>Sos responsable de lo que cargás, y de tener permiso para cargar datos de tus clientes, gremios y otras personas.</p>
+        <p>Trabajamos para que tus datos estén siempre disponibles y respaldados, pero te recomendamos hacer cada tanto un respaldo desde la app o exportar los presupuestos que te importen.</p>
+
+        <h2>Uso aceptable</h2>
+        <p>No está permitido:</p>
+        <ul>
+          <li>usar Cota para algo ilegal o para guardar contenido que no tenés derecho a guardar;</li>
+          <li>intentar saltear la prueba gratis, la suscripción o el límite de computadoras;</li>
+          <li>intentar entrar a cuentas o proyectos ajenos, o afectar el funcionamiento del servidor (por ejemplo, con pedidos automáticos masivos);</li>
+          <li>copiar, modificar, descompilar o revender Cota, salvo lo que la ley permita.</li>
+        </ul>
+
+        <h2>Disponibilidad</h2>
+        <p>Hacemos lo posible para que Cota funcione siempre, pero el servicio en la nube puede tener cortes, por mantenimiento o por fallas propias o de nuestros proveedores. Mientras tanto, la app de escritorio sigue funcionando sin conexión y manda los cambios cuando el servicio vuelve.</p>
+        <p>Si dos personas cambian el mismo dato mientras están sin conexión, Cota conserva uno y te muestra el otro en <em>Conflictos</em> para que elijas. Revisalos cuando aparezcan.</p>
+        <p>Cota cambia con el tiempo: podemos sumar, cambiar o quitar funciones. Si quitamos algo importante de lo que pagás, te avisamos antes.</p>
+
+        <h2>Cálculos y presupuestos</h2>
+        <p>Cota hace las cuentas con los datos que cargás, y la cotización del dólar viene de un servicio externo (dolarapi.com). Los presupuestos, honorarios, plazos y decisiones de obra son responsabilidad de cada profesional: revisalos antes de mandarlos o de usarlos.</p>
+
+        <h2>Propiedad de Cota</h2>
+        <p>Cota, su código, su marca y su diseño son nuestros. La suscripción te da permiso para usar Cota mientras esté vigente, según estas condiciones; no te da la propiedad de la app.</p>
+
+        <h2>Responsabilidad</h2>
+        <p>En la medida en que la ley lo permita, no respondemos por daños indirectos, como ganancias perdidas, ni por errores en datos cargados por vos o por las personas con quienes compartiste un proyecto. Nada de esto limita los derechos que te da la Ley 24.240 de Defensa del Consumidor.</p>
+
+        <h2>Dar de baja la cuenta</h2>
+        <p>Podés pedir que borremos tu cuenta cuando quieras, escribiéndonos. Antes, cancelá tu suscripción y respaldá lo que quieras conservar: al borrarla se eliminan tus proyectos de la nube, también para tus invitados.</p>
+        <p>Si alguien no cumple estas condiciones, podemos suspender su cuenta. Salvo que haga falta actuar enseguida (por ejemplo, ante un ataque), avisamos antes por email y damos la oportunidad de corregirlo. Aun suspendida, podés pedirnos una copia de tus datos.</p>
+
+        <h2>Cambios en estas condiciones</h2>
+        <p>Si cambiamos estas condiciones, actualizamos esta página y la fecha de arriba. Si el cambio es importante, te avisamos por email al menos 30 días antes de que empiece a valer. Si no estás de acuerdo, podés cancelar tu suscripción antes de esa fecha.</p>
+
+        <h2>Ley aplicable</h2>
+        <p>Estas condiciones se rigen por las leyes de la República Argentina. Ante cualquier conflicto, primero escribinos para intentar resolverlo. Si no se resuelve, intervienen los tribunales que correspondan a tu domicilio.</p>
+      </article>
+
+      <a href="./" class="mt-14 inline-flex min-h-11 items-center text-[14px] text-stone-500 underline-offset-4 hover:text-stone-900 hover:underline">Volver a la página de Cota</a>
+    </main>
+
+    <footer class="border-t border-stone-200">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2.5 px-4 py-10 text-[13px] text-stone-500 sm:px-6">
+        <div class="flex items-center gap-2.5">
+          <svg class="h-5 w-5" aria-hidden="true"><use href="#simbolo" /></svg>
+          <span>© {{anio}} Cota</span>
+        </div>
+        <a href="privacidad.html" class="inline-flex min-h-11 items-center hover:text-stone-900">Privacidad</a>
+      </div>
+    </footer>
+  </body>
+</html>

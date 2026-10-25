@@ -43,9 +43,10 @@
     </header>
 
     <!--
-      Política de privacidad (la URL se carga en Microsoft Store → Propiedades).
-      Tiene que coincidir con lo que hace Cota de verdad: si cambia lo que se envía al servidor de
-      licencias (COTA/core/licencia.ts, supabase/functions/licencias), actualizar este texto y
+      Política de privacidad (la URL se carga en Microsoft Store → Propiedades y en Google Cloud →
+      pantalla de consentimiento de OAuth, para entrar con Google).
+      Tiene que coincidir con lo que hace Cota de verdad: si cambia lo que guarda el servidor
+      (Cota-App/paquetes/servidor/src/db/schema.ts) o lo que manda la app, actualizar este texto y
       privacidadActualizada en src/config.ts.
     -->
     <main id="contenido" class="mx-auto max-w-[680px] px-4 pb-24 pt-16 sm:px-6 sm:pt-24">
@@ -57,9 +58,10 @@
       <div class="mt-10 rounded-2xl bg-white p-6 shadow-[0_0_0_0.5px_var(--color-stone-300)] sm:p-8">
         <h2 class="text-[17px] font-semibold text-stone-900">En pocas palabras</h2>
         <ul class="mt-4 space-y-3 text-stone-700">
-          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Tus proyectos, presupuestos y archivos quedan <strong class="font-semibold text-stone-900">solo en tu computadora</strong>. Nunca los recibimos.</span></li>
-          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Para la licencia guardamos tu email y un identificador de cada PC donde la activás. Para que la prueba gratis sea una por computadora, guardamos un identificador anónimo de cada PC.</span></li>
-          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Los pagos los procesa Mercado Pago. Guardamos los datos del pago que nos informa (por ejemplo, tu nombre y tu documento) para identificarte si algo falla, pero nunca el número completo de tu tarjeta.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Sin cuenta, todo lo que cargás queda <strong class="font-semibold text-stone-900">solo en tu computadora</strong>.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Con cuenta, tus proyectos se guardan en nuestro servidor para que los abras desde cualquier PC y los compartas. Los ven solo vos y las personas con quienes los compartís.</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>De tu cuenta guardamos tu email, tu nombre y tu contraseña cifrada (o tu cuenta de Google, si entrás con ella).</span></li>
+          <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>Los pagos los procesa Mercado Pago. Nunca vemos el número completo de tu tarjeta.</span></li>
           <li class="flex gap-3"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" aria-hidden="true"></span><span>No hay publicidad, no vendemos datos y no medimos cómo usás la app.</span></li>
         </ul>
       </div>
@@ -68,73 +70,95 @@
         <h2>Quién es responsable</h2>
         <p>Cota es una app desarrollada por Manuel Pueyrredon, en la Argentina. Para cualquier consulta sobre tus datos, escribí a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>.</p>
 
-        <h2>Lo que queda en tu computadora</h2>
-        <p>Todo lo que cargás en Cota (proyectos, clientes, presupuestos, pagos, compras, fotos y documentos) se guarda en una carpeta de tu computadora. Cota no lo sube a ningún servidor. Hacer respaldos de esa carpeta depende de vos: en <em>Configuración</em> hay un botón para abrirla.</p>
+        <h2>Sin cuenta: todo en tu computadora</h2>
+        <p>Podés usar Cota sin crear una cuenta, durante la prueba gratis. En ese caso, todo lo que cargás (proyectos, clientes, presupuestos, pagos, compras, fotos y documentos) se guarda en una carpeta de tu computadora y no lo recibimos. Hacer respaldos de esa carpeta depende de vos.</p>
+
+        <h2>Con cuenta: tus datos en la nube</h2>
+        <p><strong>Tu cuenta.</strong> Al crearla guardamos:</p>
+        <ul>
+          <li>tu email, para entrar, avisarte de tu cuenta y recibir invitaciones;</li>
+          <li>tu nombre, que ven las personas con quienes compartís un proyecto, junto a lo que cargás;</li>
+          <li>tu contraseña, cifrada con un algoritmo que no permite recuperarla: ni nosotros podemos leerla;</li>
+          <li>la fecha en que creaste la cuenta y en que confirmaste tu email.</li>
+        </ul>
+        <p><strong>Entrar con Google.</strong> Si elegís entrar con Google, Google nos informa tu email, tu nombre y un identificador de tu cuenta de Google. No recibimos tu contraseña de Google ni accedemos a tus correos, contactos, archivos ni a ningún otro dato de tu cuenta de Google. Usamos esos datos solo para crear tu cuenta de Cota y reconocerte cuando volvés a entrar.</p>
+        <p><strong>Tus proyectos.</strong> Lo que cargás con la cuenta abierta (proyectos, clientes, gremios, presupuestos, pagos, cobros, compras, bitácora y archivos adjuntos) se guarda en nuestro servidor. También queda una copia en tu computadora, para que puedas trabajar sin conexión; los cambios se envían al servidor cuando vuelve internet. Si pasás a la nube los datos que tenías en la PC, se suben al servidor de la misma forma.</p>
+        <p><strong>Sesiones.</strong> Para no pedirte la contraseña cada vez, guardamos una sesión por cada computadora o navegador donde entrás, que vence a los 30 días. De la sesión guardamos solo una versión cifrada, que no sirve para entrar.</p>
+
+        <h2>Proyectos compartidos</h2>
+        <p>Cuando compartís un proyecto, guardamos el email de la persona invitada y el permiso que le diste (ver o editar), y le mandamos un mail con un link de invitación que vence a los 14 días.</p>
+        <p>Quien tiene acceso a un proyecto ve <strong>todo</strong> el proyecto: etapas, presupuestos, pagos, cobros, honorarios, bitácora y archivos, además del cliente asociado y los gremios y rubros de tu espacio. Ve también tu nombre y tu email, y quién cargó cada pago, cobro, compra y entrada de bitácora. Compartí solo con personas de confianza: podés cambiar el permiso o quitar el acceso en cualquier momento, y vale al instante.</p>
+        <p>Si te comparten un proyecto, sus datos son del dueño del proyecto, que decide quién los ve. El dueño ve tu nombre y tu email.</p>
 
         <h2>Lo que Cota envía por internet</h2>
-        <p>Cota se conecta a internet solo para tres cosas.</p>
-        <p><strong>La licencia.</strong> Al activar, validar o liberar una PC, Cota envía a nuestro servidor:</p>
+        <p>Además de tus proyectos (si tenés cuenta), Cota se conecta para:</p>
         <ul>
-          <li>la clave de la licencia;</li>
-          <li>un identificador al azar de la PC, que crea Cota y no sirve para nada fuera de la app;</li>
-          <li>el nombre de la PC, para que la reconozcas en la lista de equipos activados;</li>
-          <li>la versión de Cota.</li>
+          <li><strong>La prueba gratis.</strong> Para que la prueba de {{diasPrueba}} días sea una por computadora (y no vuelva a empezar si se borran los datos o se reinstala Cota), Cota envía un identificador anónimo de la PC: un código calculado a partir del número que tu sistema operativo le asigna a la computadora, del que no se puede saber cuál es ni a quién pertenece. Lo guardamos con la fecha en que empezó la prueba y la versión de Cota.</li>
+          <li><strong>La suscripción.</strong> Cada cuenta paga se usa en {{equiposPorCuenta}} PC a la vez. Para saber cuál es, Cota envía un identificador al azar de la PC (que crea Cota y no sirve para nada fuera de la app), el nombre de la PC, para que la reconozcas en Configuración, y la versión de Cota.</li>
+          <li><strong>La cotización del dólar.</strong> Cota consulta <a href="https://dolarapi.com" rel="noopener" target="_blank">dolarapi.com</a> para mostrar los montos en dólares. Ese pedido no lleva ningún dato tuyo.</li>
+          <li><strong>Versiones nuevas.</strong> Cota consulta en GitHub si hay una versión nueva, sin enviar datos tuyos.</li>
         </ul>
-        <p><strong>La prueba gratis.</strong> Para que la prueba de 14 días sea una por computadora (y no vuelva a empezar si se borran los datos o se reinstala Cota), la primera vez que hay conexión Cota envía a nuestro servidor:</p>
-        <ul>
-          <li>un identificador anónimo de la PC: un código calculado a partir del número que tu sistema operativo le asigna a la computadora, del que no se puede saber cuál es la computadora ni a quién pertenece;</li>
-          <li>la versión de Cota.</li>
-        </ul>
-        <p>Guardamos ese identificador con la fecha en que empezó la prueba. No se usa para nada más.</p>
-        <p>El servidor también ve la dirección IP desde la que llega el pedido. La usamos solo para frenar abusos, como alguien probando claves al azar, y se borra sola en alrededor de un día.</p>
-        <p><strong>La cotización del dólar.</strong> Cota consulta <a href="https://dolarapi.com" rel="noopener" target="_blank">dolarapi.com</a> para mostrar los montos en dólares. Ese pedido no lleva ningún dato tuyo.</p>
+        <p>El servidor también ve la dirección IP desde la que llega cada pedido. La usamos solo para frenar abusos, como alguien probando contraseñas, y se borra sola en menos de un día.</p>
+
+        <h2>Mails que te mandamos</h2>
+        <p>Solo te escribimos por tu cuenta: para confirmar tu email, recuperar tu contraseña, avisarte que te compartieron un proyecto y avisos importantes de tu suscripción o de estas políticas. No mandamos publicidad.</p>
 
         <h2>Pagos</h2>
-        <p>La suscripción se paga con <strong>Mercado Pago</strong>. Cuando pagás, cargás tus datos en Mercado Pago, no en Cota, y se rigen por su <a href="https://www.mercadopago.com.ar/privacidad" rel="noopener" target="_blank">política de privacidad</a>. De ese pago guardamos:</p>
+        <p>La suscripción se paga con <strong>Mercado Pago</strong> desde la app, con tu cuenta de Cota. Cuando pagás, cargás tus datos en Mercado Pago, no en Cota, y se rigen por su <a href="https://www.mercadopago.com.ar/privacidad" rel="noopener" target="_blank">política de privacidad</a>. De ese pago guardamos:</p>
         <ul>
-          <li>el email con el que te suscribiste, para asociarlo a tu licencia y poder ayudarte;</li>
-          <li>el número de la suscripción y de cada pago, el monto, las fechas y si se aprobó, para saber hasta cuándo está pagada la licencia;</li>
-          <li>los datos del pago que nos informa Mercado Pago: tu nombre, tu documento, el email de tu cuenta de Mercado Pago y el medio de pago (el tipo de tarjeta y algunos de sus dígitos). Los usamos solo para identificarte y ayudarte si un pago o tu licencia fallan.</li>
+          <li>el plan, el número de la suscripción y de cada pago, el monto, las fechas y si se aprobó, para saber hasta cuándo está paga tu cuenta;</li>
+          <li>los datos del pago que nos informa Mercado Pago: tu nombre, tu documento, el email de tu cuenta de Mercado Pago y el medio de pago (el tipo de tarjeta y algunos de sus dígitos). Los usamos solo para identificarte y ayudarte si un pago falla.</li>
         </ul>
         <p>Nunca vemos ni guardamos el número completo de tu tarjeta, su código de seguridad ni tus datos bancarios.</p>
 
         <h2>Para qué usamos los datos</h2>
-        <p>Solo para que la licencia funcione: saber si está pagada, en qué PCs está activada y no pasarse del límite de equipos, que la prueba gratis sea una por computadora, e identificarte si un pago o tu licencia fallan. También para responderte si nos escribís. No los usamos para publicidad, no los vendemos y no los compartimos con nadie para fines propios.</p>
+        <p>Solo para darte el servicio: guardar y sincronizar tus proyectos, que puedas compartirlos, mantener tu cuenta segura, saber si tu suscripción está paga, que la prueba gratis sea una por computadora y responderte si nos escribís. No usamos tus proyectos para nada más: no los miramos, salvo que nos lo pidas para ayudarte con un problema. No usamos tus datos para publicidad, no los vendemos y no los usamos para entrenar modelos de inteligencia artificial.</p>
 
         <h2>Con quién se comparten</h2>
-        <p>Para dar el servicio usamos estos proveedores, que tratan los datos en nuestro nombre:</p>
+        <p>Además de las personas con quienes vos compartís un proyecto, usamos estos proveedores, que tratan los datos en nuestro nombre y solo para darte el servicio:</p>
         <ul>
-          <li><strong>Supabase</strong>, donde funciona el servidor de licencias y se guarda la base de datos.</li>
-          <li><strong>Mercado Pago</strong>, que procesa los pagos.</li>
+          <li>el proveedor de servidores donde funcionan el servidor de Cota y su base de datos;</li>
+          <li>el servicio con el que mandamos los mails de tu cuenta;</li>
+          <li><strong>Google</strong>, si entrás con tu cuenta de Google;</li>
+          <li><strong>Mercado Pago</strong>, que procesa los pagos;</li>
+          <li><strong>Supabase</strong>, donde funciona el servidor de licencias de las versiones anteriores de Cota (2.x), mientras siga en uso.</li>
         </ul>
-        <p>Si descargás Cota desde Microsoft Store, Microsoft trata los datos de esa descarga según su propia política. Fuera de esto, solo compartiríamos datos si una ley o una autoridad competente lo exige.</p>
+        <p>Algunos de estos proveedores pueden guardar los datos fuera de la Argentina. En ese caso, elegimos proveedores que los protegen con medidas de seguridad adecuadas. Si descargás Cota desde Microsoft Store, Microsoft trata los datos de esa descarga según su propia política. Fuera de esto, solo compartiríamos datos si una ley o una autoridad competente lo exige.</p>
 
         <h2>Cuánto tiempo los guardamos</h2>
-        <p>Los datos de la licencia se guardan mientras exista. Si pedís que la borremos, eliminamos tu email y los equipos asociados. Solo conservamos el registro de los pagos que haga falta por obligaciones legales o impositivas.</p>
+        <p>Tu cuenta y tus proyectos se guardan mientras exista tu cuenta. Si dejás de pagar, no se borra nada: tus proyectos quedan en solo lectura.</p>
+        <p>Si pedís que borremos tu cuenta, eliminamos tu email, tu nombre, tus sesiones y todos los proyectos, clientes, gremios y archivos de tu espacio. Los proyectos tuyos que compartiste dejan de estar disponibles para los invitados. Lo que cargaste en proyectos de otras personas queda en esos proyectos, que son de su dueño. Solo conservamos el registro de los pagos que haga falta por obligaciones legales o impositivas. La copia que quede en tu computadora no la podemos borrar nosotros.</p>
         <p>El identificador anónimo de la prueba gratis se guarda para que la prueba siga siendo una por computadora. Si pedís que lo borremos, lo eliminamos.</p>
-        <p>Los registros técnicos se borran solos: las direcciones IP del límite de pedidos, al día; los avisos de pago que no pudimos verificar, a los 7 días.</p>
+        <p>Los registros técnicos se borran solos: las direcciones IP del límite de pedidos, en menos de un día; los links para confirmar el email o cambiar la contraseña, al usarse o al vencer.</p>
 
         <h2>Seguridad</h2>
-        <p>La comunicación con el servidor viaja cifrada (HTTPS). La base de datos de licencias no es accesible desde afuera: solo la usa el propio servidor.</p>
+        <p>La comunicación con el servidor viaja cifrada (HTTPS). Las contraseñas, las sesiones y los links que te mandamos por mail se guardan cifrados de forma que no se pueden recuperar. El servidor revisa en cada pedido que tengas permiso sobre lo que pedís, y la base de datos no es accesible desde afuera: solo la usa el propio servidor. Hay un límite de intentos para entrar, contra quien quiera adivinar contraseñas.</p>
 
         <h2>Tus derechos</h2>
-        <p>Podés pedirnos en cualquier momento ver, corregir o borrar tus datos, escribiendo a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Te respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para corregir o borrar.</p>
+        <p>Podés pedirnos en cualquier momento ver, corregir o borrar tus datos, o una copia de tus proyectos, escribiendo a <a href="mailto:{{emailPrivacidad}}">{{emailPrivacidad}}</a>. Tu nombre lo podés cambiar vos mismo desde la app. Te respondemos dentro de los plazos de la Ley 25.326 de Protección de los Datos Personales: 10 días corridos para el acceso y 5 días hábiles para corregir o borrar.</p>
         <p>La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
 
+        <h2>Datos de otras personas</h2>
+        <p>En Cota cargás datos de tus clientes y gremios (nombres, teléfonos, emails, direcciones). Sos responsable de tener su permiso para hacerlo. Nosotros los guardamos solo para que vos los uses, y los tratamos con el mismo cuidado que los tuyos.</p>
+
         <h2>Menores de edad</h2>
-        <p>Cota es una herramienta profesional para estudios de arquitectura. No está pensada para menores de edad y no recopilamos datos de menores a sabiendas.</p>
+        <p>Cota es una herramienta profesional para estudios de arquitectura. No está pensada para menores de 18 años y no recopilamos datos de menores a sabiendas.</p>
 
         <h2>Cambios en esta política</h2>
-        <p>Si cambia lo que hace Cota con tus datos, actualizamos esta página y la fecha de arriba. Si el cambio es importante, también te avisamos por email.</p>
+        <p>Si cambia lo que hace Cota con tus datos, actualizamos esta página y la fecha de arriba. Si el cambio es importante, también te avisamos por email antes de que empiece a valer.</p>
+        <p>El uso de Cota se rige también por las <a href="terminos.html">condiciones del servicio</a>.</p>
       </article>
 
       <a href="./" class="mt-14 inline-flex min-h-11 items-center text-[14px] text-stone-500 underline-offset-4 hover:text-stone-900 hover:underline">Volver a la página de Cota</a>
     </main>
 
     <footer class="border-t border-stone-200">
-      <div class="mx-auto flex max-w-6xl items-center gap-2.5 px-4 py-10 text-[13px] text-stone-500 sm:px-6">
-        <svg class="h-5 w-5" aria-hidden="true"><use href="#simbolo" /></svg>
-        <span>© {{anio}} Cota</span>
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2.5 px-4 py-10 text-[13px] text-stone-500 sm:px-6">
+        <div class="flex items-center gap-2.5">
+          <svg class="h-5 w-5" aria-hidden="true"><use href="#simbolo" /></svg>
+          <span>© {{anio}} Cota</span>
+        </div>
+        <a href="terminos.html" class="inline-flex min-h-11 items-center hover:text-stone-900">Condiciones del servicio</a>
       </div>
     </footer>
   </body>

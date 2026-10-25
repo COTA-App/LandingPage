@@ -15,9 +15,6 @@ function completarConfig(): Plugin {
     precioAnual: config.precioAnualArs.toLocaleString('es-AR'),
     // Lo que sale por mes pagando el año, redondeado a la centena: 299.000 → "24.900".
     anualPorMes: (Math.round(config.precioAnualArs / 12 / 100) * 100).toLocaleString('es-AR'),
-    precioFundador: config.precioFundadorArs && config.cuposFundadores ? config.precioFundadorArs.toLocaleString('es-AR') : '',
-    // El anual cuesta como 10 meses: "2 meses gratis". Vacío si no ahorra nada.
-    mesesGratis: String(Math.max(0, Math.round(12 - config.precioAnualArs / config.precioMensualArs)) || ''),
     anio: String(new Date().getFullYear())
   }
   return {
@@ -42,8 +39,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // pago.html: adonde vuelve Mercado Pago después de pagar (abre Cota con cota://pago).
-      // privacidad.html: la política de privacidad (la pide Microsoft Store).
-      input: { index: 'index.html', pago: 'pago.html', privacidad: 'privacidad.html' }
+      // privacidad.html: la política de privacidad (la piden Microsoft Store y Google, para entrar con Google).
+      // terminos.html: las condiciones del servicio (la pide Google, en la pantalla de consentimiento).
+      input: { index: 'index.html', pago: 'pago.html', privacidad: 'privacidad.html', terminos: 'terminos.html' }
     }
   }
 })

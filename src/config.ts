@@ -12,20 +12,16 @@ export const config = {
   /** Precios en pesos, sin puntos. Tienen que coincidir con PRECIO_MENSUAL_ARS y PRECIO_ANUAL_ARS del servidor. */
   precioMensualArs: 29900,
   precioAnualArs: 299000,
-  /**
-   * Precio fundador: los primeros `cuposFundadores` estudios pagan esto por mes, de por vida.
-   * Tiene que coincidir con FUNDADORES_PRECIO_MENSUAL_ARS y FUNDADORES_CUPOS del servidor.
-   * En 0, la franja de fundadores no se muestra (por ejemplo, cuando se llenen los lugares).
-   */
-  precioFundadorArs: 14900,
-  cuposFundadores: 10,
-  diasPrueba: 14,
-  equiposPorLicencia: 3,
+  /** Tienen que coincidir con DIAS_PRUEBA y EQUIPOS_POR_CUENTA de paquetes/compartido/src/planes.ts. */
+  diasPrueba: 30,
+  equiposPorCuenta: 1,
   linkedin: '',
   instagram: '',
   email: '',
-  /** Contacto de la política de privacidad (consultas y pedidos de borrado). Siempre se muestra en privacidad.html. */
+  /** Contacto de la política de privacidad y de los términos (consultas y pedidos de borrado). Siempre se muestra en privacidad.html y terminos.html. */
   emailPrivacidad: 'manupuey03@gmail.com',
   /** Fecha de la última versión de la política de privacidad. Cambiarla cada vez que cambie el texto. */
-  privacidadActualizada: '12 de octubre de 2026'
+  privacidadActualizada: '23 de octubre de 2026',
+  /** Fecha de la última versión de las condiciones del servicio. Cambiarla cada vez que cambie el texto. */
+  terminosActualizados: '23 de octubre de 2026'
 }

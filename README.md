@@ -13,7 +13,7 @@ npm run preview   # sirve dist/ para revisarlo
 
 ## Qué se cambia y dónde
 
-- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail (Microsoft Store, si se vacía, vuelve a decir "Próximamente"). Los precios (mensual, anual y fundador) tienen que coincidir con los del servidor; cuando se llenen los lugares de fundador, `precioFundadorArs: 0` oculta la franja. Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
+- **Links, precio y redes:** `src/config.ts`. Un valor vacío oculta su botón: hoy están ocultos LinkedIn, Instagram y el mail (Microsoft Store, si se vacía, vuelve a decir "Próximamente"). Los precios (mensual y anual), los días de prueba y las PCs por cuenta tienen que coincidir con los del servidor (`paquetes/compartido/src/planes.ts` en el repo de Cota). La landing no muestra descuentos. Los valores se aplican al compilar, en el plugin de `vite.config.ts`. En el HTML:
   - `{{clave}}` se reemplaza por el valor;
   - `<!-- si:clave -->…<!-- /si -->` se muestra solo si hay valor;
   - `<!-- no:clave -->…<!-- /no -->` se muestra solo si no hay valor.
@@ -28,11 +28,13 @@ npm run preview   # sirve dist/ para revisarlo
 - Abre Cota con el link `cota://pago`: Cota pasa al frente, valida la licencia en el momento y muestra *Configuración → Licencia*.
 - El mensaje es solo informativo: la licencia se activa por lo que el servidor le pregunta a Mercado Pago, nunca por esta página.
 
-## Política de privacidad
+## Política de privacidad y condiciones del servicio
 
-`privacidad.html` es la política de privacidad: su URL es la que se carga en Microsoft Store (*Propiedades*). Está enlazada desde el pie de la portada.
-- Describe lo que hace Cota de verdad: qué envía al servidor de licencias, qué se guarda de los pagos y qué queda solo en la PC. Si eso cambia en la app o en el servidor, hay que actualizar el texto.
-- Cada vez que cambie el texto, actualizar `privacidadActualizada` en `src/config.ts`. El email de contacto es `emailPrivacidad`.
+- `privacidad.html` es la política de privacidad: su URL se carga en Microsoft Store (*Propiedades*) y en Google Cloud (*pantalla de consentimiento de OAuth*, para entrar con Google).
+- `terminos.html` son las condiciones del servicio: su URL se carga en Google Cloud, en la misma pantalla.
+- Las dos están enlazadas desde el pie de la portada y desde *Crear una cuenta* en la app (`paquetes/app/src/components/Cuenta.tsx`).
+- Describen lo que hace Cota 3 de verdad: la cuenta, los proyectos en la nube, compartir, la prueba, la suscripción y qué pasa al dejar de pagar. Si eso cambia en la app o en el servidor, hay que actualizar el texto.
+- Cada vez que cambie el texto, actualizar `privacidadActualizada` o `terminosActualizados` en `src/config.ts`. El email de contacto es `emailPrivacidad`.
 
 ## Descarga del instalador
 
