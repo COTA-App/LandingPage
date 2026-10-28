@@ -3,36 +3,29 @@ import tailwindcss from '@tailwindcss/vite'
 import { config } from './src/config.ts'
 
 /**
- * Completa index.html con los valores de src/config.ts:
+ * Completa las páginas con los valores de src/config.ts:
  *   {{clave}}                          se reemplaza por el valor
  *   <!-- si:clave --> … <!-- /si -->   se deja solo si el valor no está vacío
  *   <!-- no:clave --> … <!-- /no -->   se deja solo si el valor está vacío
  */
-const pesos = (n: number) => n.toLocaleString('es-AR')
-/** Redondeado a la centena: 299.000 / 12 → "24.900". */
-const centena = (n: number) => pesos(Math.round(n / 100) * 100)
 
-/** Los valores de cada plan para el HTML: `{{estudioMensual}}`, `{{estudioPorPersona}}`, `{{estudioPersonas}}`… */
-function valoresDePlanes(): Record<string, string> {
-  const { independiente, estudio, estudioPlus } = config.planes
-  const valores: Record<string, string> = { independientePcs: String(independiente.pcs) }
-  for (const [nombre, plan] of Object.entries({ independiente, estudio, estudioPlus })) {
-    valores[`${nombre}Mensual`] = pesos(plan.mensualArs)
-    valores[`${nombre}Anual`] = pesos(plan.anualArs)
-  }
-  for (const [nombre, plan] of Object.entries({ estudio, estudioPlus })) {
-    valores[`${nombre}Personas`] = String(plan.personas)
-    valores[`${nombre}PorPersona`] = centena(plan.mensualArs / plan.personas)
-  }
-  return valores
+/** Adónde lleva "Pedí una demo": WhatsApp con el mensaje ya escrito, o si no hay número, un mail. */
+function linkDemo(contacto: string): string {
+  const numero = config.whatsapp.replace(/\D/g, '')
+  if (numero) return `https://wa.me/${numero}?text=${encodeURIComponent(config.mensajeDemo)}`
+  return `mailto:${contacto}?subject=${encodeURIComponent(config.mensajeDemo)}`
 }
 
 function completarConfig(): Plugin {
+  // Adónde escribir: el mail de contacto, o si no hay, el de privacidad.
+  const contacto = config.email || config.emailPrivacidad
   const valores: Record<string, string> = {
     ...Object.fromEntries(Object.entries(config).map(([k, v]) => [k, String(v)])),
-    ...valoresDePlanes(),
-    // Adónde escribir para un plan a medida: el mail de contacto, o si no hay, el de privacidad.
-    contacto: config.email || config.emailPrivacidad,
+    contacto,
+    demo: linkDemo(contacto),
+    independientePcs: String(config.planes.independiente.pcs),
+    estudioPersonas: String(config.planes.estudio.personas),
+    estudioPlusPersonas: String(config.planes.estudioPlus.personas),
     anio: String(new Date().getFullYear())
   }
   return {
@@ -42,7 +35,7 @@ function completarConfig(): Plugin {
         .replace(/<!-- si:(\w+) -->([\s\S]*?)<!-- \/si -->/g, (_, k, bloque) => (valores[k] ? bloque : ''))
         .replace(/<!-- no:(\w+) -->([\s\S]*?)<!-- \/no -->/g, (_, k, bloque) => (valores[k] ? '' : bloque))
         .replace(/\{\{(\w+)\}\}/g, (_, k) => {
-          if (!(k in valores)) throw new Error(`index.html usa {{${k}}}, que no está en src/config.ts`)
+          if (!(k in valores)) throw new Error(`La página usa {{${k}}}, que no está en src/config.ts`)
           return valores[k]
         })
     }
@@ -57,9 +50,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // pago.html: adonde vuelve Mercado Pago después de pagar (abre Cota con cota://pago).
+      // descargar.html: los instaladores; no está enlazada (se manda a cada cliente, y la abre el aviso de versión nueva).
       // privacidad.html: la política de privacidad (la piden Microsoft Store y Google, para entrar con Google).
       // terminos.html: las condiciones del servicio (la pide Google, en la pantalla de consentimiento).
-      input: { index: 'index.html', pago: 'pago.html', privacidad: 'privacidad.html', terminos: 'terminos.html' }
+      input: { index: 'index.html', pago: 'pago.html', descargar: 'descargar.html', privacidad: 'privacidad.html', terminos: 'terminos.html' }
     }
   }
 })

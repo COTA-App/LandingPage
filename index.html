@@ -12,6 +12,10 @@
     <link rel="icon" href="/marca/cota-icono-claro.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/marca/icono-180.png" />
     <link rel="stylesheet" href="/src/estilos.css" />
+    <!-- Las versiones instaladas de Cota abren #descargar al avisar de una versión nueva: las descargas ahora están en descargar.html. -->
+    <script>
+      if (location.hash === '#descargar') location.replace('descargar.html')
+    </script>
   </head>
   <body>
     <!-- Símbolo de Cota, definido una vez y reutilizado. Toma los colores del modo claro u oscuro. -->
@@ -42,8 +46,8 @@
         </a>
         <div class="flex items-center gap-1 sm:gap-2">
           <a href="#funciones" class="hidden min-h-11 items-center px-3 text-[14px] text-stone-600 hover:text-stone-900 sm:inline-flex">Funciones</a>
-          <a href="#precio" class="hidden min-h-11 items-center px-3 text-[14px] text-stone-600 hover:text-stone-900 sm:inline-flex">Precio</a>
-          <a href="#descargar" class="boton boton-principal ml-1 min-h-9 px-4 text-[14px]">Descargar</a>
+          <a href="#empezar" class="hidden min-h-11 items-center px-3 text-[14px] text-stone-600 hover:text-stone-900 sm:inline-flex">Cómo empezar</a>
+          <a href="{{demo}}" class="boton boton-principal ml-1 min-h-9 px-4 text-[14px]" rel="noopener" target="_blank">Pedí una demo</a>
         </div>
       </nav>
     </header>
@@ -57,37 +61,13 @@
         <p class="mx-auto mt-5 max-w-xl text-[19px] leading-[1.45] text-stone-500 sm:text-[21px]">
           Proyectos, presupuestos y control de obra para estudios de arquitectura. En la nube, compartidos con quien trabajás, y sin conexión cuando hace falta.
         </p>
-        <div id="descargar" class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="{{descargaExe}}" class="boton boton-principal w-full max-w-72 sm:w-auto">
-            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" /></svg>
-            Descargar para Windows
+        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="{{demo}}" class="boton boton-principal w-full max-w-72 sm:w-auto" rel="noopener" target="_blank">
+            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z" /></svg>
+            Pedí una demo
           </a>
-          <!-- si:microsoftStore -->
-          <a href="{{microsoftStore}}" class="boton boton-secundario w-full max-w-72 sm:w-auto">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z" /></svg>
-            Microsoft Store
-          </a>
-          <!-- /si -->
-          <!-- no:microsoftStore -->
-          <span class="boton boton-inactivo w-full max-w-72 sm:w-auto" aria-disabled="true">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z" /></svg>
-            Microsoft Store · Próximamente
-          </span>
-          <!-- /no -->
         </div>
-        <p class="mt-4 text-[13px] text-stone-500">Windows 10 y 11 · {{diasPrueba}} días gratis, sin tarjeta y sin crear cuenta</p>
-        <!-- si:appStore -->
-        <a href="{{appStore}}" class="mt-5 inline-flex min-h-11 items-center gap-2 text-[15px] text-stone-700 underline-offset-4 hover:underline">
-          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" /><path d="M10.5 18.5h3" /></svg>
-          También en iPhone y iPad
-        </a>
-        <!-- /si -->
-        <!-- no:appStore -->
-        <p class="mt-5 inline-flex items-center gap-2 rounded-full bg-stone-100 px-3.5 py-1.5 text-[13px] text-stone-600 shadow-[inset_0_0_0_0.5px_var(--color-stone-300)]">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" /><path d="M10.5 18.5h3" /></svg>
-          Próximamente para iPhone y iPad
-        </p>
-        <!-- /no -->
+        <p class="mt-4 text-[13px] text-stone-500">Te la muestro con un proyecto tuyo, en 20 minutos y sin compromiso.</p>
 
         <div class="ventana mx-auto mt-14 max-w-5xl sm:mt-20">
           <picture>
@@ -211,74 +191,43 @@
         </section>
       </div>
 
-      <!-- Precio -->
-      <!--
-        Los planes y precios salen de src/config.ts (planes). Tienen que coincidir con el servidor y la
-        app (Cota-App/docs/cobros.md, paquetes/compartido/src/planes.ts). La página no lleva JavaScript:
-        sin selector de mensual o anual, cada tarjeta muestra los dos.
-      -->
-      <section id="precio" class="border-t border-stone-200 py-20 sm:py-28">
+      <!-- Cómo empezar: Cota se vende de a uno, con una demo (los precios no se publican). -->
+      <section id="empezar" class="border-t border-stone-200 py-20 sm:py-28">
         <div class="aparece mx-auto max-w-6xl px-4 text-center sm:px-6">
-          <p class="rotulo">Precio</p>
-          <h2 class="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Un plan para cada estudio.</h2>
+          <p class="rotulo">Cómo empezar</p>
+          <h2 class="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[48px]">Hecho con cada estudio.</h2>
+          <p class="mx-auto mt-4 max-w-xl text-stone-500">Cota crece con lo que necesitan los estudios que la usan. Contame cómo trabajás y armamos el plan a tu medida.</p>
 
-          <p class="mx-auto mt-4 max-w-xl text-stone-500">Cada plan incluye la app y la nube. Probala {{diasPrueba}} días gratis, sin tarjeta y sin crear cuenta.</p>
+          <ol class="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
+            <li class="rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[14px] font-semibold text-acento-700">1</p>
+              <h3 class="mt-2 text-[17px] font-semibold text-stone-900">Escribime</h3>
+              <p class="mt-1.5 text-[15px] text-stone-500">Contame cómo armás hoy tus presupuestos y cómo seguís la obra.</p>
+            </li>
+            <li class="rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[14px] font-semibold text-acento-700">2</p>
+              <h3 class="mt-2 text-[17px] font-semibold text-stone-900">Te la muestro</h3>
+              <p class="mt-1.5 text-[15px] text-stone-500">En una videollamada de 20 minutos, con un proyecto tuyo, y te la dejo instalada.</p>
+            </li>
+            <li class="rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
+              <p class="text-[14px] font-semibold text-acento-700">3</p>
+              <h3 class="mt-2 text-[17px] font-semibold text-stone-900">La probás {{diasPrueba}} días</h3>
+              <p class="mt-1.5 text-[15px] text-stone-500">Con mi ayuda. Lo que le falte para tu estudio, lo vemos juntos.</p>
+            </li>
+          </ol>
 
-          <div class="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
-            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
-              <p class="text-[17px] font-semibold text-stone-900">Independiente</p>
-              <p class="mt-1 text-[14px] text-stone-500">Para quien trabaja solo</p>
-              <p class="mt-5 flex items-baseline gap-1.5">
-                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{independienteMensual}}</span>
-                <span class="text-[15px] text-stone-500">por mes</span>
-              </p>
-              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{independienteAnual}} por año: dos meses gratis</p>
-              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Tu cuenta en {{independientePcs}} PCs, por ejemplo la del estudio y la notebook</span></li>
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Si entrás en otra, se libera sola la que usaste hace más tiempo</span></li>
-              </ul>
-            </div>
-            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_1.5px_var(--color-acento-700),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
-              <p class="text-[17px] font-semibold text-stone-900">Estudio</p>
-              <p class="mt-1 text-[14px] text-stone-500">Hasta {{estudioPersonas}} personas</p>
-              <p class="mt-5 flex items-baseline gap-1.5">
-                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{estudioMensual}}</span>
-                <span class="text-[15px] text-stone-500">por mes</span>
-              </p>
-              <p class="mt-1.5 text-[14px] font-medium text-acento-700">$&nbsp;{{estudioPorPersona}} por persona</p>
-              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{estudioAnual}} por año: dos meses gratis</p>
-              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Tu equipo se suma con un código: cada persona crea su cuenta y lo carga</span></li>
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Ves quién lo usa y liberás un lugar cuando alguien se va</span></li>
-              </ul>
-            </div>
-            <div class="flex flex-col rounded-2xl bg-white p-6 text-left sm:p-8 shadow-[0_0_0_0.5px_var(--color-stone-300),0_12px_40px_-12px_rgb(0_0_0/0.15)]">
-              <p class="text-[17px] font-semibold text-stone-900">Estudio+</p>
-              <p class="mt-1 text-[14px] text-stone-500">Hasta {{estudioPlusPersonas}} personas</p>
-              <p class="mt-5 flex items-baseline gap-1.5">
-                <span class="text-[36px] font-semibold leading-none tracking-[-0.03em] text-stone-900">$&nbsp;{{estudioPlusMensual}}</span>
-                <span class="text-[15px] text-stone-500">por mes</span>
-              </p>
-              <p class="mt-1.5 text-[14px] font-medium text-acento-700">$&nbsp;{{estudioPlusPorPersona}} por persona</p>
-              <p class="mt-1.5 text-[14px] text-stone-500">O $&nbsp;{{estudioPlusAnual}} por año: dos meses gratis</p>
-              <ul class="mt-6 space-y-3 text-[15px] text-stone-700">
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Todo lo del plan Estudio, para equipos más grandes</span></li>
-                <li class="flex gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg><span>Cada persona en su PC, también sin conexión</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="mx-auto mt-6 max-w-3xl text-[15px] text-stone-600">¿Son más de {{estudioPlusPersonas}}? <a href="mailto:{{contacto}}" class="font-medium text-acento-700 underline underline-offset-2">Escribinos</a> y armamos un plan a medida.</p>
-
-          <ul class="mx-auto mt-6 flex max-w-3xl flex-col gap-2 text-left text-[15px] text-stone-600 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Mensual con débito automático: cancelás cuando quieras</li>
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Anual en un pago, en cuotas o en efectivo</li>
-            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Proyectos en la nube y compartir sin límite de invitados</li>
+          <ul class="mx-auto mt-8 flex max-w-3xl flex-col gap-2 text-left text-[15px] text-stone-600 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6">
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Un plan según el tamaño de tu estudio</li>
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Proyectos y archivos en la nube</li>
+            <li class="flex gap-2"><svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" /></svg>Compartir sin límite de invitados</li>
           </ul>
 
           <div class="mx-auto mt-10 max-w-md">
-            <a href="{{descargaExe}}" class="boton boton-principal w-full">Probar gratis {{diasPrueba}} días</a>
-            <p class="mt-3 text-[13px] text-stone-500">Te suscribís desde la app, con tu cuenta, cuando quieras. Si dejás de pagar, no se borra nada: tus proyectos quedan para ver y exportar.</p>
+            <a href="{{demo}}" class="boton boton-principal w-full" rel="noopener" target="_blank">
+              <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z" /></svg>
+              Pedí una demo
+            </a>
+            <p class="mt-3 text-[13px] text-stone-500">Sin compromiso. Si Cota no es para tu estudio, te lo digo.</p>
           </div>
         </div>
       </section>

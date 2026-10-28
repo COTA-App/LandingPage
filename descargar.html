@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Descargar Cota</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f4eee4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/marca/cota-icono-claro.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/estilos.css" />
+  </head>
+  <body>
+    <!-- Símbolo de Cota, definido una vez y reutilizado. Toma los colores del modo claro u oscuro. -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <symbol id="simbolo" viewBox="182 182 660 660">
+        <g style="stroke: var(--simbolo-trazo); stroke-width: 26">
+          <line x1="200" y1="512" x2="824" y2="512" />
+          <line x1="512" y1="200" x2="512" y2="824" />
+          <circle cx="512" cy="512" r="208" style="fill: var(--simbolo-fondo)" />
+        </g>
+        <path d="M512 512 L512 304 A208 208 0 0 1 720 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <path d="M512 512 L512 720 A208 208 0 0 1 304 512 Z" style="fill: var(--simbolo-cuadrante)" />
+        <g style="stroke: var(--simbolo-cuadrante); stroke-width: 26">
+          <line x1="304" y1="512" x2="720" y2="512" />
+          <line x1="512" y1="304" x2="512" y2="720" />
+        </g>
+      </symbol>
+    </svg>
+
+
+    <!--
+      Las descargas de Cota. No está enlazada desde la landing (Cota se vende de a uno, con una demo):
+      se le manda a cada cliente, y la abre el aviso de versión nueva de la app (index.html desvía #descargar acá).
+    -->
+    <main class="flex min-h-dvh flex-col items-center justify-center px-4 py-16 text-center">
+      <svg class="h-14 w-14" aria-hidden="true"><use href="#simbolo" /></svg>
+      <h1 class="mt-8 text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-stone-900 sm:text-[40px]">Descargar Cota</h1>
+      <p class="mx-auto mt-4 max-w-md text-stone-500">Para Windows 10 y 11. Si ya tenés Cota, instalá encima: tus datos quedan como estaban.</p>
+      <div class="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="{{descargaExe}}" class="boton boton-principal w-full max-w-72 sm:w-auto">
+          <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" /></svg>
+          Descargar para Windows
+        </a>
+        <!-- si:microsoftStore -->
+        <a href="{{microsoftStore}}" class="boton boton-secundario w-full max-w-72 sm:w-auto">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z" /></svg>
+          Microsoft Store
+        </a>
+        <!-- /si -->
+      </div>
+      <p class="mt-4 text-[13px] text-stone-500">{{diasPrueba}} días gratis, sin tarjeta y sin crear cuenta</p>
+      <p class="mt-10 max-w-sm text-[14px] text-stone-500">¿Dudas para instalarla? <a href="{{demo}}" class="font-medium text-acento-700 underline underline-offset-2" rel="noopener" target="_blank">Escribime</a> y te ayudo.</p>
+      <a href="./" class="mt-6 inline-flex min-h-11 items-center text-[14px] text-stone-500 underline-offset-4 hover:text-stone-900 hover:underline">Ir a la página de Cota</a>
+    </main>
+  </body>
+</html>
